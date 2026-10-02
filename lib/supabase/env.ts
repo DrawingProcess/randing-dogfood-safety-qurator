@@ -1,7 +1,10 @@
 import { runtimeEnv } from "@/lib/runtime-env";
 
 export function normalizeSupabaseUrl(value: string) {
-  return value.trim().replace(/\/+$/, "").replace(/\/rest\/v1$/i, "");
+  const trimmed = value.trim();
+  const dashboard = trimmed.match(/supabase\.com\/dashboard\/project\/([a-z0-9]+)/i);
+  if (dashboard) return `https://${dashboard[1]}.supabase.co`;
+  return trimmed.replace(/\/+$/, "").replace(/\/rest\/v1$/i, "");
 }
 
 export function supabaseUrl() {

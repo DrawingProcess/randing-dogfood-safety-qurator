@@ -1,4 +1,5 @@
 import { bindings, defineConfig, defineWorker } from "cf/config";
+import { normalizeSupabaseUrl } from "./lib/supabase/env";
 
 const runtimeBindingNames = [
   "ANALYSIS_PASSWORD",
@@ -14,7 +15,9 @@ function runtimeBindings() {
   };
 
   for (const name of runtimeBindingNames) {
-    const value = process.env[name];
+    const raw = process.env[name];
+    if (!raw) continue;
+    const value = name === "NEXT_PUBLIC_SUPABASE_URL" ? normalizeSupabaseUrl(raw) : raw;
     if (value) env[name] = bindings.text(value);
   }
 
