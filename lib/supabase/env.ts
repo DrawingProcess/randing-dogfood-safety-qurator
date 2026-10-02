@@ -1,7 +1,11 @@
 import { runtimeEnv } from "@/lib/runtime-env";
 
+export function normalizeSupabaseUrl(value: string) {
+  return value.trim().replace(/\/+$/, "").replace(/\/rest\/v1$/i, "");
+}
+
 export function supabaseUrl() {
-  return runtimeEnv("NEXT_PUBLIC_SUPABASE_URL");
+  return normalizeSupabaseUrl(runtimeEnv("NEXT_PUBLIC_SUPABASE_URL"));
 }
 
 export function supabaseAnonKey() {
