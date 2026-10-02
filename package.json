@@ -21,7 +21,7 @@
     "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.62.4",
+    "@cloudflare/vite-plugin": "^2.0.0-beta.sha-52b0dc0e9",
     "@mdx-js/rollup": "^3.1.1",
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/vite": "^4.3.3",
