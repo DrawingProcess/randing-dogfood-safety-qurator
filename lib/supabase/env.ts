@@ -1,13 +1,15 @@
+import { runtimeEnv } from "@/lib/runtime-env";
+
 export function supabaseUrl() {
-  return process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
+  return runtimeEnv("NEXT_PUBLIC_SUPABASE_URL");
 }
 
 export function supabaseAnonKey() {
-  return process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "";
+  return runtimeEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY");
 }
 
 export function supabaseServiceKey() {
-  return process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
+  return runtimeEnv("SUPABASE_SERVICE_ROLE_KEY");
 }
 
 export function isSupabaseConfigured() {

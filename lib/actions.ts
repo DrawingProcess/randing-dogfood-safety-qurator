@@ -10,6 +10,7 @@ import { hasServiceRole } from "@/lib/supabase/env";
 import { normalizeSurveyRow } from "@/lib/survey";
 import { badgeTypes, categories, petTypes, productStatuses, sizeTypes, type BadgeType } from "@/lib/types";
 import { isUuid } from "@/lib/utils";
+import { runtimeEnv } from "@/lib/runtime-env";
 
 export type ActionState = { error?: string; ok?: boolean } | null;
 
@@ -23,7 +24,7 @@ function samePassword(input: string, expected: string) {
 }
 
 export async function unlockGate(_prev: ActionState, formData: FormData): Promise<ActionState> {
-  const expected = process.env.ANALYSIS_PASSWORD;
+  const expected = runtimeEnv("ANALYSIS_PASSWORD");
   const password = String(formData.get("password") ?? "");
   if (!expected) return { error: "ANALYSIS_PASSWORD 환경변수가 설정되지 않았습니다." };
   if (!samePassword(password, expected)) return { error: "비밀번호가 올바르지 않습니다." };

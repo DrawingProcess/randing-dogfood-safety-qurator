@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SampleForm } from "@/components/sample-form";
+import { runtimeEnv } from "@/lib/runtime-env";
 import { isUuid } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -10,5 +11,5 @@ export const metadata: Metadata = {
 export default async function SamplePage({ searchParams }: { searchParams: Promise<{ product?: string }> }) {
   const params = await searchParams;
   const productId = params.product && isUuid(params.product) ? params.product : undefined;
-  return <SampleForm googleFormUrl={process.env.NEXT_PUBLIC_GOOGLE_FORM_URL ?? ""} productId={productId} />;
+  return <SampleForm googleFormUrl={runtimeEnv("NEXT_PUBLIC_GOOGLE_FORM_URL")} productId={productId} />;
 }
