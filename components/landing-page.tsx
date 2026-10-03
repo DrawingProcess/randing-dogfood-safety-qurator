@@ -6,28 +6,6 @@ import { SampleCtaLink } from "@/components/sample-cta";
 import { categoryLabels, petLabels } from "@/lib/labels";
 import type { Product } from "@/lib/types";
 
-const problems = [
-  "이 사료 성분 논란 있었던 것 같은데...?",
-  "성분표에서 뭐부터 확인해야 하지...?",
-  "수제 간식이라고 하는데 국산 맞겠지...?",
-  "원재료 표시가 왜 이렇게 찾기 힘들어...?",
-];
-
-const usualSteps = [
-  "사료 직접 검색",
-  "성분 이슈 탐색",
-  "성분표 분석 및 비교",
-  "기호도를 위한 후기 확인",
-  "상품 선택",
-  "소비 및 구매 결정",
-];
-
-const oursBenefits = [
-  "이미 선별된 사료 및 간식",
-  "세분화된 카테고리 큐레이션",
-  "견종, 나이, 기호도, 식성 표시",
-];
-
 export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "dog" | "cat"; category: "food" | "snack"; products: Product[] }> }) {
   const preview = groups.filter((group) => group.products.length > 0);
 
@@ -57,63 +35,11 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
       </section>
 
       <section className="mx-auto max-w-[82rem] px-4 pb-16 pt-4">
-        <h2 className="text-[1.85rem] font-extrabold leading-snug sm:text-4xl lg:text-[2.75rem]">안심 사료를 찾기 위한 과정, 어떠셨나요?</h2>
-        <div className="mt-8 grid gap-3 sm:grid-cols-2">
-          {problems.map((quote) => (
-            <blockquote key={quote} className="rounded-2xl bg-[#fff6e4] px-5 py-5 text-xl leading-8 sm:text-[1.35rem] sm:leading-9">
-              “{quote}”
-            </blockquote>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-[82rem] px-4 pb-20">
-        <h2 className="text-[1.85rem] font-extrabold leading-snug sm:text-4xl lg:text-[2.75rem]">믿고멍냥은 다릅니다.</h2>
-        <div className="mt-8 grid gap-4 lg:grid-cols-2">
-          <article className="rounded-[1.75rem] bg-[#fffaf2] p-6 sm:p-8">
-            <h3 className="text-center text-3xl font-extrabold sm:text-4xl lg:text-[2.75rem]">기존 소비 방식</h3>
-            <div className="mt-8 grid items-center gap-6 sm:grid-cols-[auto_1fr] sm:gap-10">
-              <p className="shrink-0 text-[1.65rem] font-extrabold leading-snug sm:w-[11rem] sm:text-3xl">
-                최소 6단계의
-                <br />
-                구매 절차
-              </p>
-              <ol className="space-y-3 text-xl font-medium sm:text-[1.35rem]">
-                {usualSteps.map((step, index) => (
-                  <li key={step}>
-                    {index + 1}. {step}
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </article>
-          <article className="rounded-[1.75rem] bg-yellow p-6 sm:p-8">
-            <h3 className="text-center text-3xl font-extrabold sm:text-4xl lg:text-[2.75rem]">믿고멍냥</h3>
-            <div className="mt-8 grid items-center gap-6 sm:grid-cols-[auto_1fr] sm:gap-8">
-              <p className="rounded-2xl bg-white px-5 py-6 text-center text-2xl font-extrabold leading-snug sm:max-w-[9.5rem] sm:text-[1.75rem]">
-                검색 단계
-                <br />
-                간소화
-              </p>
-              <ul className="space-y-4 text-[1.35rem] font-semibold leading-snug sm:text-2xl">
-                {oursBenefits.map((item) => (
-                  <li key={item} className="flex items-center gap-3 sm:gap-4">
-                    <span
-                      aria-hidden
-                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[0.2rem] border-[2.5px] border-ink text-lg font-extrabold leading-none sm:h-8 sm:w-8 sm:text-xl"
-                    >
-                      ✓
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <p className="mt-8 rounded-2xl bg-white/80 px-4 py-3 text-center text-lg font-extrabold sm:text-xl">
-              필터 설정 → 구매, 오직 2단계의 구매 절차
-            </p>
-          </article>
-        </div>
+        <img
+          src="/design/poster_custom-pipeline.jpeg"
+          alt="안심 사료를 찾기 위한 과정과 기존 소비 방식 대비 믿고멍냥의 검색 단계 간소화"
+          className="h-auto w-full"
+        />
       </section>
 
       <section id="products" className="border-t border-line bg-[#fff8ec]">
