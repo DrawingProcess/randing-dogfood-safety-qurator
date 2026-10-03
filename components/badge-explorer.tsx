@@ -19,7 +19,7 @@ export function BadgeExplorer() {
               type="button"
               aria-pressed={selected}
               onClick={() => setOpen(type)}
-              className={`rounded-full border px-3 py-2 text-sm font-medium ${selected ? "border-forest bg-leaf text-forest" : "border-line bg-card"}`}
+              className={`rounded-full border px-3 py-2 text-sm font-medium ${selected ? "border-[#c4a032] bg-yellow text-ink" : "border-line bg-card"}`}
             >
               {badge.emoji} {badge.label}
             </button>

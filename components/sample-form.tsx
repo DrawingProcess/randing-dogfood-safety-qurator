@@ -115,7 +115,7 @@ export function SampleForm({ googleFormUrl, productId }: { googleFormUrl: string
               key={value}
               type="button"
               onClick={() => choosePet(value)}
-              className={`rounded-3xl border px-4 py-6 text-lg font-semibold ${pet === value ? "border-forest bg-leaf" : "border-line bg-card"}`}
+              className={`rounded-3xl border px-4 py-6 text-lg font-semibold ${pet === value ? "border-[#c4a032] bg-yellow" : "border-line bg-card"}`}
             >
               {label}
             </button>
@@ -142,7 +142,7 @@ export function SampleForm({ googleFormUrl, productId }: { googleFormUrl: string
               {questions.concerns.map((concern) => {
                 const selected = answers.concerns.includes(concern);
                 return (
-                  <button key={concern} type="button" aria-pressed={selected} onClick={() => toggleConcern(concern)} className={`rounded-full border px-3 py-2 text-sm ${selected ? "border-forest bg-leaf" : "border-line bg-card"}`}>
+                  <button key={concern} type="button" aria-pressed={selected} onClick={() => toggleConcern(concern)} className={`rounded-full border px-3 py-2 text-sm ${selected ? "border-[#c4a032] bg-yellow" : "border-line bg-card"}`}>
                     {concern}
                   </button>
                 );
@@ -154,7 +154,7 @@ export function SampleForm({ googleFormUrl, productId }: { googleFormUrl: string
             <textarea value={answers.avoid} onChange={(event) => update({ avoid: event.target.value })} className="mt-2 min-h-24 w-full rounded-2xl border border-line bg-card px-4 py-3" />
           </label>
           <ChoiceGroup label={questions.frequencyLabel} options={questions.frequency} value={answers.frequency} onChange={(frequency) => update({ frequency })} />
-          <button type="button" disabled={!ready} onClick={complete} className="rounded-full bg-forest px-5 py-3 font-semibold text-white disabled:opacity-40">
+          <button type="button" disabled={!ready} onClick={complete} className="rounded-full bg-[#efc14a] px-5 py-3 font-semibold text-ink disabled:opacity-40">
             이 정보로 다음 단계 보기
           </button>
         </div>
@@ -196,7 +196,7 @@ function ChoiceGroup({ label, options, value, onChange }: { label: string; optio
       <legend className="font-semibold">{label}</legend>
       <div className="mt-3 flex flex-wrap gap-2">
         {options.map((option) => (
-          <button key={option} type="button" aria-pressed={value === option} onClick={() => onChange(option)} className={`rounded-full border px-3 py-2 text-sm ${value === option ? "border-forest bg-yellow" : "border-line bg-card"}`}>
+          <button key={option} type="button" aria-pressed={value === option} onClick={() => onChange(option)} className={`rounded-full border px-3 py-2 text-sm ${value === option ? "border-[#c4a032] bg-yellow" : "border-line bg-card"}`}>
             {option}
           </button>
         ))}

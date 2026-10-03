@@ -127,7 +127,7 @@ function FilterRow({ label, children }: { label: string; children: React.ReactNo
 
 function FilterChip({ href, active, onClick, children }: { href: string; active: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
-    <Link href={href} onClick={onClick} className={`rounded-full border px-3 py-2 text-sm ${active ? "border-forest bg-yellow font-semibold" : "border-line bg-card"}`}>
+    <Link href={href} onClick={onClick} className={`rounded-full border px-3 py-2 text-sm ${active ? "border-[#c4a032] bg-yellow font-semibold" : "border-line bg-card"}`}>
       {children}
     </Link>
   );

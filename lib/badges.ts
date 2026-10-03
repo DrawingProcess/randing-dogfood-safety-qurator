@@ -6,13 +6,13 @@ export const badgeCatalog: Record<
 > = {
   ingredient_checked: {
     label: "성분 확인",
-    emoji: "🟢",
+    emoji: "🟡",
     description:
       "주요 원재료와 성분 표시를 자체 기준에 따라 확인한 표시입니다. 안전을 단정하는 표시는 아닙니다.",
   },
   manufacturing_checked: {
     label: "제조정보 확인",
-    emoji: "🟢",
+    emoji: "🏭",
     description:
       "제조국, 제조사, 제조 방식처럼 보호자가 비교하기 어려운 제조 정보를 정리했다는 표시입니다.",
   },
@@ -34,3 +34,9 @@ export const badgeCatalog: Record<
 };
 
 export const badgeOrder = Object.keys(badgeCatalog) as BadgeType[];
+
+export function badgeChipClass(type: string) {
+  if (type === "manufacturing_checked") return "bg-[#efc14a] text-ink";
+  if (type === "ingredient_checked") return "bg-yellow text-ink";
+  return "bg-[#fff3c4] text-ink";
+}

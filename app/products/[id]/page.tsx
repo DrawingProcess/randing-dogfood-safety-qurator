@@ -5,6 +5,7 @@ import { SampleCtaLink } from "@/components/sample-cta";
 import { TrackOnMount } from "@/components/track";
 import { categoryLabels, petLabels, sizeLabels } from "@/lib/labels";
 import { getProduct } from "@/lib/products";
+import { badgeChipClass } from "@/lib/badges";
 import { formatPrice } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -40,7 +41,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           <p className="text-sm text-muted">
             {petLabels[product.pet_type]} · {categoryLabels[product.category]} · {sizeLabels[product.size_type]}
           </p>
-          <h1 className="mt-2 text-3xl font-bold leading-tight">{product.name}</h1>
+          <h1 className="mt-2 text-2xl font-bold leading-tight sm:text-3xl">{product.name}</h1>
           <p className="mt-3 text-lg">{product.description}</p>
           <p className="mt-4 text-2xl font-bold">{formatPrice(product.price)}</p>
           <p className="mt-2 text-sm text-muted">정식 오픈 전이라 이 화면에서는 결제할 수 없습니다.</p>
@@ -56,17 +57,17 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           <ul className="mt-3 space-y-3">
             {product.badges.map((badge) => (
               <li key={badge.id} className="rounded-2xl border border-line bg-card p-4">
-                <p className="font-semibold">{badge.badge_label}</p>
+                <p className={`inline-flex rounded-full px-2.5 py-1 text-sm font-semibold ${badgeChipClass(badge.badge_type)}`}>{badge.badge_label}</p>
                 <p className="mt-1 text-sm leading-6 text-muted">{badge.description}</p>
               </li>
             ))}
           </ul>
           <h2 className="mt-8 text-lg font-bold">상품 정보</h2>
           <p className="mt-3 leading-8 text-muted">{product.detail_description}</p>
-          <div className="mt-10 rounded-3xl bg-leaf/50 p-5">
+          <div className="mt-10 rounded-3xl bg-yellow/60 p-5">
             <p className="font-semibold">정식 판매 전에 의견을 듣고 있습니다.</p>
             <p className="mt-2 text-sm leading-6 text-muted">샘플은 판매 상품이 아닙니다. 관심 있는 보호자에게 먹거리를 보내며 선택 기준을 확인하는 이벤트입니다.</p>
-            <SampleCtaLink source="product_detail" productId={product.id} petType={product.pet_type} className="mt-4 inline-flex rounded-full bg-forest px-5 py-3 font-semibold text-white">
+            <SampleCtaLink source="product_detail" productId={product.id} petType={product.pet_type} className="mt-4 inline-flex rounded-full bg-[#efc14a] px-5 py-3 font-semibold text-ink">
               안심 먹거리 샘플 받아보기 →
             </SampleCtaLink>
           </div>
