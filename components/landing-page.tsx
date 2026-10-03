@@ -38,12 +38,9 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
           믿고 먹이는 사료, 믿고 고르는 간식 큐레이션 마켓 믿고멍냥
         </p>
         <div className="mt-8 grid items-center gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(24rem,0.8fr)] lg:gap-12">
-          <h1 className="text-[2.15rem] font-extrabold leading-[1.2] tracking-tight sm:text-[2.85rem] lg:text-[3.5rem]">
-            <span className="lg:whitespace-nowrap">
-              우리 아이가 매일 먹는 <span className="whitespace-nowrap">사료,</span>
-            </span>
-            <br />
-            아무거나 고르지 마세요.
+          <h1 className="min-w-0 text-[length:clamp(1.05rem,4.8vw,3.5rem)] font-extrabold leading-[1.2] tracking-tight">
+            <span className="block whitespace-nowrap">우리 아이가 매일 먹는 사료,</span>
+            <span className="block whitespace-nowrap">아무거나 고르지 마세요.</span>
           </h1>
           <div className="flex w-full flex-col lg:w-[34rem] lg:justify-self-end">
             <p className="text-xl leading-8 text-ink sm:text-[1.35rem] sm:leading-9">
