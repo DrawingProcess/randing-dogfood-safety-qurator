@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 const sans = Noto_Sans_KR({
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "700", "800"],
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
