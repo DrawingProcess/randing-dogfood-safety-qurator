@@ -45,13 +45,13 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
             <br />
             아무거나 고르지 마세요.
           </h1>
-          <div className="lg:justify-self-end">
-            <p className="max-w-md text-xl leading-8 text-ink sm:text-[1.35rem] sm:leading-9">
+          <div className="flex max-w-md flex-col lg:max-w-[28rem] lg:justify-self-end">
+            <p className="text-xl leading-8 text-ink sm:text-[1.35rem] sm:leading-9">
               성분부터 제조 정보까지 꼼꼼하게 살펴보고 선별한 사료와 간식만 모았습니다.
             </p>
             <Link
               href="/products"
-              className="mt-6 inline-flex rounded-full bg-[#fff6e4] px-7 py-3.5 text-lg font-extrabold text-ink"
+              className="mt-6 inline-flex min-h-16 w-full items-center justify-center rounded-full bg-[#fff6e4] px-8 py-5 text-center text-xl font-extrabold leading-snug text-ink sm:min-h-[4.5rem] sm:px-10 sm:py-6 sm:text-2xl"
             >
               큐레이션 사료 / 간식 보러가기
             </Link>
