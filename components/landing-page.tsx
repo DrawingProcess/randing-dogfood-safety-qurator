@@ -1,127 +1,135 @@
 import Link from "next/link";
 import { BadgeExplorer } from "@/components/badge-explorer";
 import { CategoryLinks } from "@/components/category-links";
-import { ChickPea } from "@/components/characters";
 import { ProductCard } from "@/components/product-card";
 import { SampleCtaLink } from "@/components/sample-cta";
 import { categoryLabels, petLabels } from "@/lib/labels";
 import type { Product } from "@/lib/types";
 
 const problems = [
-  "이 사료 성분 괜찮은 거 맞아?",
-  "이 간식 논란 있었던 제품 아닌가?",
-  "수제간식이라고 하는데 어디서 만든 거지?",
-  "성분표를 봐도 뭐가 뭔지 모르겠는데...",
+  "이 사료 성분 논란 있었던 것 같은데...?",
+  "성분표에서 뭐부터 확인해야 하지...?",
+  "수제 간식이라고 하는데 국산 맞겠지...?",
+  "원재료 표시가 왜 이렇게 찾기 힘들어...?",
 ];
 
-const solutions = [
-  { title: "성분 정보 확인", body: "주요 원재료와 성분 정보를 확인합니다." },
-  { title: "관련 이력 확인", body: "제품 선택에 참고할 수 있는 논란 및 관련 정보를 확인합니다." },
-  { title: "제조 정보 확인", body: "제조국, 제조 방식 등의 정보를 명확하게 보여드립니다." },
-  { title: "안심 마크", body: "복잡한 제품 정보를 직관적인 뱃지로 보여드립니다." },
+const usualSteps = [
+  "사료 직접 검색",
+  "성분 이슈 탐색",
+  "성분표 분석 및 비교",
+  "기호도를 위한 후기 확인",
+  "상품 선택",
+  "소비 및 구매 결정",
 ];
 
-const usual = ["수많은 상품", "직접 검색", "성분 비교", "후기 검색", "논란 검색", "상품 선택"];
-const ours = ["선별", "큐레이션", "비교하기 쉬운 정보", "구매"];
+const oursBenefits = [
+  "이미 선별된 사료 및 간식",
+  "세분화된 카테고리 큐레이션",
+  "견종, 나이, 기호도, 식성 표시",
+];
 
 export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "dog" | "cat"; category: "food" | "snack"; products: Product[] }> }) {
+  const preview = groups.filter((group) => group.products.length > 0);
+
   return (
-    <div>
-      <section className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-12 sm:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:py-20">
-        <div>
-          <p className="mb-4 inline-flex rounded-full bg-leaf px-3 py-1 text-sm font-medium text-forest">강아지와 고양이를 위한 반려동물 먹거리 큐레이션 마켓</p>
-          <h1 className="max-w-xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl">우리 아이가 먹는 건데, 아무거나 고르지 마세요.</h1>
-          <p className="mt-5 max-w-xl text-lg leading-8 text-muted">성분부터 제조 정보까지 꼼꼼하게 살펴보고 선별한 사료와 간식만 모았습니다.</p>
-          <Link href="/products" className="mt-8 inline-flex rounded-full bg-yellow px-5 py-3 font-semibold">
-            선별 상품 보기
-          </Link>
-        </div>
-        <div className="rounded-[2rem] border border-line bg-card p-6">
-          <ChickPea className="mx-auto h-52 w-full max-w-sm" />
-          <p className="text-center text-sm text-muted">작은 병아리와 완두콩처럼, 먹거리는 작게 살펴보고 고릅니다.</p>
-        </div>
-      </section>
-
-      <section className="bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-16">
-          <h2 className="max-w-2xl text-3xl font-bold leading-snug">사료 하나 고르려고 검색을 몇 번이나 해보셨나요?</h2>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2">
-            {problems.map((quote) => (
-              <blockquote key={quote} className="rounded-3xl border border-line bg-background p-5 text-lg leading-8">
-                “{quote}”
-              </blockquote>
-            ))}
+    <div className="bg-white">
+      <section className="mx-auto max-w-6xl px-4 py-12 sm:py-16 lg:py-20">
+        <p className="inline-flex rounded-full bg-[#fff6e4] px-4 py-2 text-sm font-medium text-ink">
+          믿고 먹이는 사료, 믿고 고르는 간식 큐레이션 마켓 믿고멍냥
+        </p>
+        <div className="mt-8 grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+          <h1 className="max-w-xl text-4xl font-bold leading-[1.2] tracking-tight sm:text-5xl lg:text-[3.4rem]">
+            우리 아이가 매일 먹는 사료,
+            <br />
+            아무거나 고르지 마세요.
+          </h1>
+          <div className="lg:justify-self-end">
+            <p className="max-w-md text-lg leading-8 text-ink">
+              성분부터 제조 정보까지 꼼꼼하게 살펴보고 선별한 사료와 간식만 모았습니다.
+            </p>
+            <Link
+              href="/products"
+              className="mt-6 inline-flex rounded-full bg-[#fff6e4] px-6 py-3 font-semibold text-ink"
+            >
+              큐레이션 사료 / 간식 보러가기
+            </Link>
           </div>
-          <p className="mt-8 max-w-2xl text-lg leading-8">
-            수많은 제품 중에서 <strong>우리 아이에게 괜찮은 제품을 직접 찾아야 하는 것.</strong> 반려동물 먹거리를 고르는 일이 생각보다 쉽지 않습니다.
-          </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="text-3xl font-bold">그래서, 우리가 먼저 골라놓았습니다.</h2>
-        <p className="mt-4 max-w-2xl leading-8 text-muted">모든 사료와 간식을 판매하는 대신 우리가 정한 기준에 따라 확인하고 선별한 제품만 판매합니다.</p>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {solutions.map((item) => (
-            <article key={item.title} className="rounded-3xl border border-line bg-card p-5">
-              <div className="mb-4 h-2 w-10 rounded-full bg-leaf" />
-              <h3 className="text-lg font-bold">{item.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted">{item.body}</p>
-            </article>
+      <section className="mx-auto max-w-6xl px-4 pb-16 pt-4">
+        <h2 className="text-3xl font-bold leading-snug sm:text-4xl">안심 사료를 찾기 위한 과정, 어떠셨나요?</h2>
+        <div className="mt-8 grid gap-3 sm:grid-cols-2">
+          {problems.map((quote) => (
+            <blockquote key={quote} className="rounded-2xl bg-[#fff6e4] px-5 py-5 text-lg leading-8">
+              “{quote}”
+            </blockquote>
           ))}
         </div>
       </section>
 
-      <section className="bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-16">
-          <h2 className="max-w-3xl text-3xl font-bold leading-snug">상품을 많이 파는 마켓이 아니라, 고를 필요가 적은 마켓</h2>
-          <div className="mt-8 grid gap-4 lg:grid-cols-2">
-            <article className="rounded-3xl border border-line p-6">
-              <h3 className="text-lg font-bold">일반 쇼핑몰</h3>
-              <ol className="mt-4 space-y-3">
-                {usual.map((step, index) => (
-                  <li key={step} className="flex items-center gap-3">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe4] text-sm">{index + 1}</span>
-                    {step}
+      <section className="mx-auto max-w-6xl px-4 pb-20">
+        <h2 className="text-3xl font-bold leading-snug sm:text-4xl">믿고멍냥은 다릅니다.</h2>
+        <div className="mt-8 grid gap-4 lg:grid-cols-2">
+          <article className="rounded-[1.75rem] bg-[#fffaf2] p-6 sm:p-8">
+            <h3 className="text-center text-xl font-bold">기존 소비 방식</h3>
+            <div className="mt-8 grid items-center gap-6 sm:grid-cols-[auto_1fr] sm:gap-10">
+              <p className="text-2xl font-bold leading-snug sm:max-w-[7rem]">
+                최소 6단계의
+                <br />
+                구매 절차
+              </p>
+              <ol className="space-y-3 text-lg">
+                {usualSteps.map((step, index) => (
+                  <li key={step}>
+                    {index + 1}. {step}
                   </li>
                 ))}
               </ol>
-            </article>
-            <article className="rounded-3xl border border-forest/20 bg-leaf/40 p-6">
-              <h3 className="text-lg font-bold">믿고멍냥</h3>
-              <ol className="mt-4 space-y-3">
-                {ours.map((step, index) => (
-                  <li key={step} className="flex items-center gap-3">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-yellow text-sm font-semibold">{index + 1}</span>
-                    {step}
+            </div>
+          </article>
+          <article className="rounded-[1.75rem] bg-yellow p-6 sm:p-8">
+            <h3 className="text-center text-xl font-bold">믿고멍냥</h3>
+            <div className="mt-8 grid items-center gap-6 sm:grid-cols-[auto_1fr] sm:gap-8">
+              <p className="rounded-2xl bg-white px-5 py-6 text-center text-xl font-bold leading-snug sm:max-w-[8.5rem]">
+                검색 단계
+                <br />
+                간소화
+              </p>
+              <ul className="space-y-3 text-lg">
+                {oursBenefits.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span aria-hidden className="mt-0.5 font-semibold">☑</span>
+                    <span>{item}</span>
                   </li>
                 ))}
-              </ol>
-            </article>
-          </div>
-          <p className="mt-8 text-xl font-semibold">“뭘 살지”보다 “뭘 먹일지”에 집중할 수 있도록.</p>
+              </ul>
+            </div>
+            <p className="mt-8 rounded-2xl bg-white/80 px-4 py-3 text-center text-base font-medium">
+              필터 설정 → 구매, 오직 2단계의 구매 절차
+            </p>
+          </article>
         </div>
       </section>
 
-      <section id="products" className="mx-auto max-w-6xl px-4 py-16">
-        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-          <div>
-            <h2 className="text-3xl font-bold">골라 둔 먹거리</h2>
-            <p className="mt-2 text-muted">강아지와 고양이, 사료와 간식만 먼저 보여드립니다.</p>
+      <section id="products" className="border-t border-line bg-[#fff8ec]">
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+              <h2 className="text-3xl font-bold">골라 둔 먹거리</h2>
+              <p className="mt-2 text-muted">강아지와 고양이, 사료와 간식만 먼저 보여드립니다.</p>
+            </div>
+            <CategoryLinks
+              links={[
+                { href: "/products?pet=dog&category=food", label: "🐶 강아지 사료", pet: "dog", category: "food" },
+                { href: "/products?pet=dog&category=snack", label: "🐶 강아지 간식", pet: "dog", category: "snack" },
+                { href: "/products?pet=cat&category=food", label: "🐱 고양이 사료", pet: "cat", category: "food", className: "rounded-full bg-leaf px-3 py-2" },
+                { href: "/products?pet=cat&category=snack", label: "🐱 고양이 간식", pet: "cat", category: "snack", className: "rounded-full bg-leaf px-3 py-2" },
+              ]}
+            />
           </div>
-          <CategoryLinks
-            links={[
-              { href: "/products?pet=dog&category=food", label: "🐶 강아지 사료", pet: "dog", category: "food" },
-              { href: "/products?pet=dog&category=snack", label: "🐶 강아지 간식", pet: "dog", category: "snack" },
-              { href: "/products?pet=cat&category=food", label: "🐱 고양이 사료", pet: "cat", category: "food", className: "rounded-full bg-leaf px-3 py-2" },
-              { href: "/products?pet=cat&category=snack", label: "🐱 고양이 간식", pet: "cat", category: "snack", className: "rounded-full bg-leaf px-3 py-2" },
-            ]}
-          />
-        </div>
-        <div className="mt-8 space-y-10">
-          {groups
-            .filter((group) => group.products.length > 0)
-            .map((group) => (
+          <div className="mt-8 space-y-10">
+            {preview.map((group) => (
               <div key={group.title}>
                 <h3 className="mb-4 text-xl font-bold">
                   {group.pet === "dog" ? "🐶" : "🐱"} {petLabels[group.pet]} {categoryLabels[group.category]}
@@ -133,6 +141,7 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
                 </div>
               </div>
             ))}
+          </div>
         </div>
       </section>
 
