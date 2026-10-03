@@ -5,7 +5,7 @@ import { SampleCtaLink } from "@/components/sample-cta";
 import { TrackOnMount } from "@/components/track";
 import { categoryLabels, petLabels, sizeLabels } from "@/lib/labels";
 import { getProduct } from "@/lib/products";
-import { badgeChipClass } from "@/lib/badges";
+import { badgeChipClass, badgeEmoji } from "@/lib/badges";
 import { formatPrice } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -41,7 +41,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           <p className="text-sm text-muted">
             {petLabels[product.pet_type]} · {categoryLabels[product.category]} · {sizeLabels[product.size_type]}
           </p>
-          <h1 className="mt-2 text-2xl font-bold leading-tight sm:text-3xl">{product.name}</h1>
+          <h1 className="mt-2 text-xl font-bold leading-tight sm:text-3xl">{product.name}</h1>
           <p className="mt-3 text-lg">{product.description}</p>
           <p className="mt-4 text-2xl font-bold">{formatPrice(product.price)}</p>
           <p className="mt-2 text-sm text-muted">정식 오픈 전이라 이 화면에서는 결제할 수 없습니다.</p>
@@ -57,7 +57,9 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           <ul className="mt-3 space-y-3">
             {product.badges.map((badge) => (
               <li key={badge.id} className="rounded-2xl border border-line bg-card p-4">
-                <p className={`inline-flex rounded-full px-2.5 py-1 text-sm font-semibold ${badgeChipClass(badge.badge_type)}`}>{badge.badge_label}</p>
+                <p className={`inline-flex rounded-full px-2.5 py-1 text-sm font-semibold ${badgeChipClass(badge.badge_type)}`}>
+                  {badgeEmoji(badge.badge_type)} {badge.badge_label}
+                </p>
                 <p className="mt-1 text-sm leading-6 text-muted">{badge.description}</p>
               </li>
             ))}

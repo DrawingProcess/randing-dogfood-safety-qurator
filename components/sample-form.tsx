@@ -104,7 +104,7 @@ export function SampleForm({ googleFormUrl, productId }: { googleFormUrl: string
     <div className="mx-auto max-w-3xl px-4 py-10">
       <TrackOnMount event_name="sample_page_viewed" page="/sample" product_id={productId ?? null} />
       <p className="text-sm font-medium text-forest">샘플은 정식 상품이 아니라, 오픈 전 의견을 듣기 위한 이벤트입니다.</p>
-      <h1 className="mt-3 text-3xl font-bold leading-snug sm:text-4xl">우리 아이에게 맞는 먹거리를 찾아볼게요.</h1>
+      <h1 className="mt-3 text-xl font-bold leading-snug sm:text-4xl">우리 아이에게 맞는 먹거리를 찾아볼게요.</h1>
       <p className="mt-4 leading-8 text-muted">모든 아이에게 같은 먹거리가 맞는 것은 아니니까요. 몇 가지 정보를 알려주시면 우리 아이에게 더 잘 맞는 먹거리를 준비하는 데 참고하겠습니다.</p>
 
       <section className="mt-8">

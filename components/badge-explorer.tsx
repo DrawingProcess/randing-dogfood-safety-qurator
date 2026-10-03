@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { badgeCatalog, badgeOrder } from "@/lib/badges";
+import { badgeCatalog, badgeChipClass, badgeOrder } from "@/lib/badges";
 
 export function BadgeExplorer() {
   const [open, setOpen] = useState(badgeOrder[0]);
@@ -19,7 +19,7 @@ export function BadgeExplorer() {
               type="button"
               aria-pressed={selected}
               onClick={() => setOpen(type)}
-              className={`rounded-full border px-3 py-2 text-sm font-medium ${selected ? "border-[#c4a032] bg-yellow text-ink" : "border-line bg-card"}`}
+              className={`rounded-full border px-3 py-2 text-sm font-medium ${selected ? `border-transparent ${badgeChipClass(type)}` : "border-line bg-card"}`}
             >
               {badge.emoji} {badge.label}
             </button>

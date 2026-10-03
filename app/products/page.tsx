@@ -36,7 +36,7 @@ export default async function ProductsPage({
           source: "products_page",
         }}
       />
-      <h1 className="text-2xl font-bold sm:text-3xl">선별 상품</h1>
+      <h1 className="text-xl font-bold sm:text-3xl">선별 상품</h1>
       <p className="mt-2 max-w-2xl leading-7 text-muted">결제는 아직 열리지 않았습니다. 성분과 제조 정보를 비교해 보는 탐색 화면입니다.</p>
       {source === "seed" ? <p className="mt-3 text-sm text-muted">Supabase가 연결되면 저장된 상품을 보여줍니다.</p> : null}
       <div className="mt-6">

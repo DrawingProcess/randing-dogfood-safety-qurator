@@ -3,7 +3,7 @@
 import Link from "next/link";
 import type { Product } from "@/lib/types";
 import { categoryLabels, petLabels, sizeLabels } from "@/lib/labels";
-import { badgeChipClass } from "@/lib/badges";
+import { badgeChipClass, badgeEmoji } from "@/lib/badges";
 import { formatPrice } from "@/lib/utils";
 import { trackEvent } from "@/components/track";
 
@@ -34,7 +34,7 @@ export function ProductCard({ product }: { product: Product }) {
         <ul className="flex flex-wrap gap-1.5">
           {product.badges.slice(0, 4).map((badge) => (
             <li key={badge.id} className={`rounded-full px-2 py-0.5 text-[10px] font-medium sm:px-2.5 sm:py-1 sm:text-xs ${badgeChipClass(badge.badge_type)}`}>
-              {badge.badge_label}
+              {badgeEmoji(badge.badge_type)} {badge.badge_label}
             </li>
           ))}
         </ul>

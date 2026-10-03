@@ -35,8 +35,12 @@ export const badgeCatalog: Record<
 
 export const badgeOrder = Object.keys(badgeCatalog) as BadgeType[];
 
+export function badgeEmoji(type: string) {
+  return type in badgeCatalog ? badgeCatalog[type as BadgeType].emoji : "";
+}
+
 export function badgeChipClass(type: string) {
-  if (type === "manufacturing_checked") return "bg-[#efc14a] text-ink";
+  if (type === "manufacturing_checked") return "bg-[#c4a032] text-ink";
   if (type === "ingredient_checked") return "bg-yellow text-ink";
   return "bg-[#fff3c4] text-ink";
 }
