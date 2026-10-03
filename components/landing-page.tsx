@@ -39,7 +39,9 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
         </p>
         <div className="mt-8 grid items-center gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(18rem,0.5fr)] lg:gap-10">
           <h1 className="text-[2.15rem] font-extrabold leading-[1.2] tracking-tight sm:text-[2.85rem] lg:text-[3.5rem]">
-            <span className="lg:whitespace-nowrap">우리 아이가 매일 먹는 사료,</span>
+            <span className="lg:whitespace-nowrap">
+              우리 아이가 매일 먹는 <span className="whitespace-nowrap">사료,</span>
+            </span>
             <br />
             아무거나 고르지 마세요.
           </h1>
