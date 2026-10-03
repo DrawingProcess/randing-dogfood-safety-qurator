@@ -37,9 +37,9 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
         <p className="inline-flex rounded-full bg-[#fff6e4] px-4 py-2 text-sm font-medium text-ink">
           믿고 먹이는 사료, 믿고 고르는 간식 큐레이션 마켓 믿고멍냥
         </p>
-        <div className="mt-8 grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
-          <h1 className="max-w-xl text-4xl font-bold leading-[1.2] tracking-tight sm:text-5xl lg:text-[3.4rem]">
-            우리 아이가 매일 먹는 사료,
+        <div className="mt-8 grid items-center gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.6fr)] lg:gap-12">
+          <h1 className="text-[2rem] font-bold leading-[1.25] tracking-tight sm:text-5xl lg:text-[2.9rem]">
+            <span className="lg:whitespace-nowrap">우리 아이가 매일 먹는 사료,</span>
             <br />
             아무거나 고르지 마세요.
           </h1>
@@ -74,7 +74,7 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
           <article className="rounded-[1.75rem] bg-[#fffaf2] p-6 sm:p-8">
             <h3 className="text-center text-xl font-bold">기존 소비 방식</h3>
             <div className="mt-8 grid items-center gap-6 sm:grid-cols-[auto_1fr] sm:gap-10">
-              <p className="text-2xl font-bold leading-snug sm:max-w-[7rem]">
+              <p className="shrink-0 text-2xl font-bold leading-snug sm:w-[9.5rem]">
                 최소 6단계의
                 <br />
                 구매 절차
