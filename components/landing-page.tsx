@@ -37,7 +37,7 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
         <p className="inline-flex rounded-full bg-[#fff6e4] px-4 py-2 text-sm font-medium text-ink sm:text-base">
           믿고 먹이는 사료, 믿고 고르는 간식 큐레이션 마켓 믿고멍냥
         </p>
-        <div className="mt-8 grid items-center gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(18rem,0.5fr)] lg:gap-10">
+        <div className="mt-8 grid items-center gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(24rem,0.8fr)] lg:gap-12">
           <h1 className="text-[2.15rem] font-extrabold leading-[1.2] tracking-tight sm:text-[2.85rem] lg:text-[3.5rem]">
             <span className="lg:whitespace-nowrap">
               우리 아이가 매일 먹는 <span className="whitespace-nowrap">사료,</span>
@@ -45,13 +45,13 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
             <br />
             아무거나 고르지 마세요.
           </h1>
-          <div className="flex max-w-md flex-col lg:max-w-[28rem] lg:justify-self-end">
+          <div className="flex w-full flex-col lg:w-[34rem] lg:justify-self-end">
             <p className="text-xl leading-8 text-ink sm:text-[1.35rem] sm:leading-9">
-              성분부터 제조 정보까지 꼼꼼하게 살펴보고 선별한 사료와 간식만 모았습니다.
+              성분부터 제조 정보까지 꼼꼼하게 살펴보고 선별한 <span className="whitespace-nowrap">사료와</span> 간식만 모았습니다.
             </p>
             <Link
               href="/products"
-              className="mt-6 inline-flex min-h-16 w-full items-center justify-center rounded-full bg-[#fff6e4] px-8 py-5 text-center text-xl font-extrabold leading-snug text-ink sm:min-h-[4.5rem] sm:px-10 sm:py-6 sm:text-2xl"
+              className="mt-6 inline-flex min-h-14 w-full items-center justify-center whitespace-nowrap rounded-full bg-[#fff6e4] px-4 py-4 text-center text-[clamp(0.95rem,3.6vw,1.5rem)] font-extrabold text-ink sm:min-h-[4.25rem] sm:px-8 sm:py-5 lg:min-h-[4.75rem]"
             >
               큐레이션 사료 / 간식 보러가기
             </Link>
