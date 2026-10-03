@@ -60,7 +60,7 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
         <h2 className="text-xl font-extrabold leading-snug sm:text-3xl lg:text-[2.75rem]">안심 사료를 찾기 위한 과정, 어떠셨나요?</h2>
         <div className="mt-5 grid gap-2 sm:mt-8 sm:gap-3 sm:grid-cols-2">
           {problems.map((quote) => (
-            <blockquote key={quote} className="rounded-2xl bg-[#fff6e4] px-4 py-4 text-sm leading-7 sm:px-5 sm:py-5 sm:text-[1.35rem] sm:leading-9">
+            <blockquote key={quote} className="rounded-2xl bg-[#fff6e4] px-4 py-4 text-left text-sm leading-7 sm:px-5 sm:py-5 sm:text-[1.35rem] sm:leading-9">
               “{quote}”
             </blockquote>
           ))}
@@ -71,7 +71,7 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
         <h2 className="text-xl font-extrabold leading-snug sm:text-3xl lg:text-[2.75rem]">믿고멍냥은 다릅니다.</h2>
         <div className="mt-5 grid gap-3 sm:mt-8 sm:gap-4 lg:grid-cols-2">
           <article className="rounded-[1.75rem] bg-[#fffaf2] p-5 sm:p-8">
-            <h3 className="text-center text-lg font-extrabold sm:text-3xl lg:text-[2.75rem]">기존 소비 방식</h3>
+            <h3 className="text-lg font-extrabold sm:text-3xl lg:text-[2.75rem]">기존 소비 방식</h3>
             <div className="mt-6 grid items-center gap-4 sm:mt-8 sm:grid-cols-[auto_1fr] sm:gap-10">
               <p className="shrink-0 text-lg font-extrabold leading-snug sm:w-[11rem] sm:text-3xl">
                 최소 6단계의
@@ -88,9 +88,9 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
             </div>
           </article>
           <article className="rounded-[1.75rem] bg-yellow p-5 sm:p-8">
-            <h3 className="text-center text-lg font-extrabold sm:text-3xl lg:text-[2.75rem]">믿고멍냥</h3>
+            <h3 className="text-lg font-extrabold sm:text-3xl lg:text-[2.75rem]">믿고멍냥</h3>
             <div className="mt-6 grid items-center gap-4 sm:mt-8 sm:grid-cols-[auto_1fr] sm:gap-8">
-              <p className="rounded-2xl bg-white px-4 py-4 text-center text-base font-extrabold leading-snug sm:max-w-[9.5rem] sm:px-5 sm:py-6 sm:text-[1.75rem]">
+              <p className="rounded-2xl bg-white px-4 py-4 text-left text-base font-extrabold leading-snug sm:max-w-[9.5rem] sm:px-5 sm:py-6 sm:text-[1.75rem]">
                 검색 단계
                 <br />
                 간소화
