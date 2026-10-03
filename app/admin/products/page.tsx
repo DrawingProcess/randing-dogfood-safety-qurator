@@ -26,7 +26,7 @@ export default async function AdminProductsPage() {
           <Link href="/admin/products/new" className="rounded-full bg-yellow px-4 py-2 font-semibold">상품 추가</Link>
         </div>
       </div>
-      {source === "seed" ? <p className="mt-4 rounded-2xl bg-yellow px-4 py-3 text-sm">지금은 시드 상품만 보입니다. {error ?? "Supabase service role을 연결하면 추가와 수정이 저장됩니다."}</p> : null}
+      {source === "seed" ? <p className="mt-4 rounded-2xl bg-yellow px-4 py-3 text-sm">저장된 상품을 읽지 못했습니다. {error ?? "Supabase service role을 연결하면 추가와 수정이 저장됩니다."}</p> : null}
       <div className="mt-6 overflow-x-auto rounded-3xl border border-line bg-card">
         <table className="min-w-full text-left text-sm">
           <thead className="text-muted">

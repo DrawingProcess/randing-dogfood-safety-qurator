@@ -2,7 +2,7 @@
 
 반려동물 먹거리 큐레이션 마켓의 고객검증 MVP입니다. 결제, 장바구니, 회원 기능은 없습니다. 무료 샘플은 판매 상품이 아니라 오픈 전 반응을 보는 이벤트입니다.
 
-화면에 있는 20개 상품은 실존 브랜드가 아닌 가상 데이터입니다.
+상품은 `/admin/products`에서 추가한 목록을 보여줍니다.
 
 ## 실행
 
@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Supabase 키가 없어도 랜딩, 상품 목록, 상세, 샘플 신청 화면은 시드 데이터로 열립니다. 이벤트 저장과 `/analysis` 집계, 상품 저장은 환경변수가 있어야 동작합니다.
+상품 목록, 이벤트 저장, `/analysis` 집계, 상품 저장은 Supabase 환경변수가 있어야 동작합니다.
 
 ## 환경변수
 
@@ -30,7 +30,7 @@ Supabase 키가 없어도 랜딩, 상품 목록, 상세, 샘플 신청 화면은
 Supabase SQL Editor에서 순서대로 실행합니다.
 
 1. `supabase/migrations/001_init.sql`
-2. `supabase/seed.sql`
+2. `supabase/migrations/002_delete_seed_products.sql` (처음 넣었던 가상 시드 상품 20개만 삭제)
 
 `product-images` 버킷 정책도 마이그레이션에 포함되어 있습니다. 상품 이미지를 파일로 올리면 이 버킷에 저장됩니다.
 
@@ -74,10 +74,4 @@ Google Form 원문은 사이트에 넣지 않습니다. 응답을 대시보드�
 ]
 ```
 
-## 카탈로그 다시 만들기
-
-```bash
-npm run catalog
-```
-
-`data/catalog.json`, `supabase/seed.sql`, `public/products/*.svg`를 다시 씁니다.
+처음 넣었던 가상 시드 상품을 지우려면 Supabase SQL Editor에서 `002_delete_seed_products.sql`을 실행합니다. 직접 추가한 상품은 그대로 둡니다.

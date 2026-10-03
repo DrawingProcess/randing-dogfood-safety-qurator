@@ -1,6 +1,6 @@
--- The original 20 fictional seed products are no longer inserted.
--- Running this file only deletes those seed UUIDs if they still exist.
--- User-added products are not in this ID list and stay in place.
+-- Remove the original 20 fictional seed products only.
+-- User-added catalog rows use other UUIDs and are left untouched.
+-- Badges and images cascade from products.
 
 delete from public.products
 where id in (

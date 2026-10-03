@@ -2,6 +2,7 @@ import catalog from "@/data/catalog.json";
 import type { Product, ProductFilter } from "@/lib/types";
 import { createAnonServerClient, createServiceClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
+import { purgeSeedProducts, withoutSeedProducts } from "@/lib/seed-products";
 
 type CatalogFile = { products: Product[] };
 
@@ -37,6 +38,8 @@ export async function listProducts(filter: ProductFilter = {}): Promise<{
   source: "supabase" | "seed";
   error?: string;
 }> {
+  await purgeSeedProducts();
+
   if (!isSupabaseConfigured()) {
     return { products: fromSeed(filter), source: "seed" };
   }
@@ -60,7 +63,10 @@ export async function listProducts(filter: ProductFilter = {}): Promise<{
   if (error) {
     return { products: fromSeed(filter), source: "seed", error: error.message };
   }
-  return { products: ((data ?? []) as Product[]).map((row) => normalize(row)), source: "supabase" };
+  return {
+    products: withoutSeedProducts(((data ?? []) as Product[]).map((row) => normalize(row))),
+    source: "supabase",
+  };
 }
 
 export async function getProduct(id: string, options?: { includeInactive?: boolean }) {

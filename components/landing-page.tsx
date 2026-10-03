@@ -119,18 +119,20 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
           />
         </div>
         <div className="mt-8 space-y-10">
-          {groups.map((group) => (
-            <div key={group.title}>
-              <h3 className="mb-4 text-xl font-bold">
-                {group.pet === "dog" ? "🐶" : "🐱"} {petLabels[group.pet]} {categoryLabels[group.category]}
-              </h3>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {group.products.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
+          {groups
+            .filter((group) => group.products.length > 0)
+            .map((group) => (
+              <div key={group.title}>
+                <h3 className="mb-4 text-xl font-bold">
+                  {group.pet === "dog" ? "🐶" : "🐱"} {petLabels[group.pet]} {categoryLabels[group.category]}
+                </h3>
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {group.products.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </section>
 
