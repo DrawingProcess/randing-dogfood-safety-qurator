@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { useActionState } from "react";
 import Link from "next/link";
-import { importSurvey, lockGate } from "@/lib/actions";
+import { importSurvey, lockGate, resetAnalyticsEvents } from "@/lib/actions";
 import type { DashboardData } from "@/lib/metrics";
 import { categoryLabels, petLabels } from "@/lib/labels";
 import type { Category, PetType } from "@/lib/types";
@@ -131,6 +131,7 @@ export function AnalysisDashboard({ data }: { data: DashboardData }) {
       </section>
 
       <Responses responses={data.responses} />
+      <ResetAnalytics />
       <SurveyImport />
     </main>
   );
@@ -235,6 +236,25 @@ function Responses({ responses }: { responses: DashboardData["responses"] }) {
           </tbody>
         </table>
       </div>
+    </section>
+  );
+}
+
+function ResetAnalytics() {
+  const [state, action, pending] = useActionState(resetAnalyticsEvents, null);
+  return (
+    <section className="mt-8 rounded-3xl border border-line bg-card p-5">
+      <h2 className="font-bold">조회수 초기화</h2>
+      <p className="mt-1 text-sm leading-6 text-muted">
+        분석용 이벤트만 지웁니다. 상품, 뱃지, 설문 응답은 그대로 둡니다.
+      </p>
+      <form action={action} className="mt-3 space-y-3">
+        {state?.error ? <p className="text-sm text-red-700">{state.error}</p> : null}
+        {state?.ok ? <p className="text-sm text-forest">조회수 {state.deleted?.toLocaleString("ko-KR") ?? 0}건을 지웠습니다.</p> : null}
+        <button disabled={pending} className="rounded-full border border-line bg-white px-4 py-2 text-sm font-semibold disabled:opacity-50">
+          조회수 초기화
+        </button>
+      </form>
     </section>
   );
 }
