@@ -3,6 +3,7 @@ import { ProductFilters } from "@/components/category-links";
 import { ProductCard } from "@/components/product-card";
 import { TrackOnMount } from "@/components/track";
 import { listProducts } from "@/lib/products";
+import { filterSizeForPet } from "@/lib/labels";
 import { asCategory, asPetType, asSizeType } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -20,7 +21,7 @@ export default async function ProductsPage({
   const params = await searchParams;
   const pet = asPetType(params.pet);
   const category = asCategory(params.category);
-  const size = asSizeType(params.size);
+  const size = filterSizeForPet(pet, asSizeType(params.size));
   const { products, source } = await listProducts({ pet, category, size });
 
   return (
