@@ -25,24 +25,24 @@ export function ProductCard({ product }: { product: Product }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={product.image_url} alt={product.images[0]?.alt_text || product.name} className="aspect-square w-full object-cover" />
       </Link>
-      <div className="flex flex-1 flex-col gap-2 p-3 sm:gap-3 sm:p-4">
-        <p className="text-xs text-muted">
+      <div className="flex flex-1 flex-col gap-[clamp(0.35rem,1vw,0.75rem)] p-[clamp(0.55rem,1.2vw,1rem)]">
+        <p className="text-[clamp(0.6rem,1.1vw,0.75rem)] text-muted">
           {petLabels[product.pet_type]} · {categoryLabels[product.category]} · {sizeLabels[product.size_type]}
         </p>
-        <h3 className="text-sm font-bold leading-5 sm:text-lg sm:leading-6">{product.name}</h3>
-        <p className="hidden text-sm leading-6 text-muted sm:block">{product.description}</p>
+        <h3 className="text-[clamp(0.7rem,1.5vw,1.125rem)] font-bold leading-snug">{product.name}</h3>
+        <p className="hidden text-sm leading-6 text-muted md:block">{product.description}</p>
         <ul className="flex flex-wrap gap-1.5">
           {product.badges.slice(0, 4).map((badge) => (
-            <li key={badge.id} className={`rounded-full px-2 py-0.5 text-[10px] font-medium sm:px-2.5 sm:py-1 sm:text-xs ${badgeChipClass(badge.badge_type)}`}>
+            <li key={badge.id} className={`rounded-full px-[clamp(0.35rem,0.8vw,0.65rem)] py-[clamp(0.1rem,0.3vw,0.25rem)] text-[clamp(0.55rem,0.95vw,0.75rem)] font-medium ${badgeChipClass(badge.badge_type)}`}>
               {badgeEmoji(badge.badge_type)} {badge.badge_label}
             </li>
           ))}
         </ul>
         <div className="mt-auto flex flex-col items-start gap-2 pt-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
-          <p className="text-sm font-semibold sm:text-base">{formatPrice(product.price)}</p>
+          <p className="text-[clamp(0.7rem,1.3vw,1rem)] font-semibold">{formatPrice(product.price)}</p>
           <Link
             href={`/products/${product.id}`}
-            className="rounded-full bg-leaf px-2.5 py-1.5 text-xs font-semibold sm:px-3 sm:py-2 sm:text-sm"
+            className="rounded-full bg-leaf px-[clamp(0.5rem,1vw,0.75rem)] py-[clamp(0.3rem,0.7vw,0.5rem)] text-[clamp(0.6rem,1.1vw,0.875rem)] font-semibold"
             onClick={() =>
               trackEvent({
                 event_name: "product_card_clicked",
