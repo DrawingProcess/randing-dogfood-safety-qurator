@@ -28,3 +28,8 @@ export function sizeOptions(pet?: PetType) {
   if (pet === "cat") return catSizes;
   return [...dogSizes, ...catSizes.filter((size) => size !== "all")];
 }
+
+export function filterSizeForPet(pet?: PetType, size?: SizeType) {
+  if (!pet || !size || size === "all") return undefined;
+  return sizeOptions(pet).includes(size) ? size : undefined;
+}

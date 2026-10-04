@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ProductFilters } from "@/components/category-links";
 import { ProductCard } from "@/components/product-card";
 import { TrackOnMount } from "@/components/track";
+import { filterSizeForPet } from "@/lib/labels";
 import { listProducts } from "@/lib/products";
 import { asCategory, asPetType, asSizeType } from "@/lib/utils";
 
@@ -20,7 +21,7 @@ export default async function ProductsPage({
   const params = await searchParams;
   const pet = asPetType(params.pet);
   const category = asCategory(params.category);
-  const size = asSizeType(params.size);
+  const size = filterSizeForPet(pet, asSizeType(params.size));
   const { products, source } = await listProducts({ pet, category, size });
 
   return (
@@ -45,7 +46,7 @@ export default async function ProductsPage({
       {products.length === 0 ? (
         <p className="mt-10 rounded-3xl bg-card p-6 text-muted">이 조건에 맞는 선별 상품이 없습니다.</p>
       ) : (
-        <div className="mt-8 grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-2 gap-2 sm:gap-4">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
