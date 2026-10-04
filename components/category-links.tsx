@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import type { Category, PetType, SizeType } from "@/lib/types";
+import { filterSizeForPet, sizeLabels, sizeOptions } from "@/lib/labels";
 import { trackEvent } from "@/components/track";
 
 export function CategoryLinks({
@@ -52,21 +53,15 @@ export function ProductFilters({
     { value: "food", label: "사료" },
     { value: "snack", label: "간식" },
   ];
-  const sizes: Array<{ value: SizeType; label: string; pets: PetType[] }> = [
-    { value: "small", label: "소형견", pets: ["dog"] },
-    { value: "medium", label: "중형견", pets: ["dog"] },
-    { value: "large", label: "대형견", pets: ["dog"] },
-    { value: "kitten", label: "키튼", pets: ["cat"] },
-    { value: "adult", label: "어덜트", pets: ["cat"] },
-    { value: "senior", label: "시니어", pets: ["cat"] },
-  ];
-  const visibleSizes = sizes.filter((item) => !pet || item.pets.includes(pet));
+  const visibleSizes = pet ? sizeOptions(pet).filter((value) => value !== "all") : [];
+  const selectedSize = filterSizeForPet(pet, size);
 
   function href(next: { pet?: PetType; category?: Category; size?: SizeType }) {
     const params = new URLSearchParams();
+    const nextSize = filterSizeForPet(next.pet, next.size);
     if (next.pet) params.set("pet", next.pet);
     if (next.category) params.set("category", next.category);
-    if (next.size) params.set("size", next.size);
+    if (nextSize) params.set("size", nextSize);
     const query = params.toString();
     return query ? `/products?${query}` : "/products";
   }
@@ -90,28 +85,30 @@ export function ProductFilters({
     <div className="space-y-4">
       <FilterRow label="반려동물">
         {pets.map((item) => (
-          <FilterChip key={item.label} href={href({ pet: item.value, category, size: item.value === pet ? size : undefined })} active={pet === item.value} onClick={() => track({ pet: item.value, category })}>
+          <FilterChip key={item.label} href={href({ pet: item.value, category, size: item.value === pet ? selectedSize : undefined })} active={pet === item.value} onClick={() => track({ pet: item.value, category })}>
             {item.label}
           </FilterChip>
         ))}
       </FilterRow>
       <FilterRow label="종류">
         {cats.map((item) => (
-          <FilterChip key={item.label} href={href({ pet, category: item.value, size })} active={category === item.value} onClick={() => track({ pet, category: item.value, size })}>
+          <FilterChip key={item.label} href={href({ pet, category: item.value, size: selectedSize })} active={category === item.value} onClick={() => track({ pet, category: item.value, size: selectedSize })}>
             {item.label}
           </FilterChip>
         ))}
       </FilterRow>
-      <FilterRow label="크기·연령">
-        <FilterChip href={href({ pet, category })} active={!size} onClick={() => track({ pet, category })}>
-          전체
-        </FilterChip>
-        {visibleSizes.map((item) => (
-          <FilterChip key={item.value} href={href({ pet, category, size: item.value })} active={size === item.value} onClick={() => track({ pet, category, size: item.value })}>
-            {item.label}
+      {pet ? (
+        <FilterRow label="크기·연령">
+          <FilterChip href={href({ pet, category })} active={!selectedSize} onClick={() => track({ pet, category })}>
+            전체
           </FilterChip>
-        ))}
-      </FilterRow>
+          {visibleSizes.map((value) => (
+            <FilterChip key={value} href={href({ pet, category, size: value })} active={selectedSize === value} onClick={() => track({ pet, category, size: value })}>
+              {sizeLabels[value]}
+            </FilterChip>
+          ))}
+        </FilterRow>
+      ) : null}
     </div>
   );
 }

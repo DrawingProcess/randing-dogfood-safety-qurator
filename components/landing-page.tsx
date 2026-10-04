@@ -50,7 +50,7 @@ export function LandingPage({
             </p>
             <Link
               href="/products"
-              className="mt-[clamp(0.45rem,1.4vw,1.5rem)] inline-flex min-h-[clamp(1.7rem,5.2vw,4.75rem)] w-full items-center justify-center whitespace-nowrap rounded-full bg-yellow px-[clamp(0.45rem,1.6vw,2rem)] text-center text-[clamp(0.52rem,1.7vw,1.5rem)] font-extrabold text-ink"
+              className="mt-[clamp(0.35rem,1.4vw,1.5rem)] inline-flex min-h-[clamp(1.15rem,5.2vw,4.75rem)] w-full items-center justify-center whitespace-nowrap rounded-full bg-yellow px-[clamp(0.35rem,1.6vw,2rem)] text-center text-[clamp(0.42rem,1.7vw,1.5rem)] font-extrabold text-ink"
             >
               큐레이션 사료 / 간식 보러가기
             </Link>
@@ -137,22 +137,22 @@ export function LandingPage({
               ]}
             />
           </div>
-          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+          <div className="mt-[clamp(1rem,2.2vw,2rem)] grid grid-cols-1 gap-[clamp(0.75rem,1.6vw,2rem)] md:grid-cols-2">
             {groups.map((group) => (
-              <div key={group.title}>
-                <h3 className="mb-3 text-[clamp(0.85rem,1.8vw,1.25rem)] font-bold">
+              <section key={group.title} className="rounded-[clamp(0.85rem,1.6vw,1.5rem)] bg-white p-[clamp(0.65rem,1.4vw,1.25rem)] shadow-[0_8px_24px_rgba(80,60,20,0.04)]">
+                <h3 className="mb-[clamp(0.5rem,1vw,0.75rem)] text-[clamp(0.8rem,1.8vw,1.25rem)] font-bold">
                   {group.pet === "dog" ? "🐶" : "🐱"} {petLabels[group.pet]} {categoryLabels[group.category]}
                 </h3>
                 {group.products.length === 0 ? (
-                  <p className="rounded-2xl bg-card px-4 py-6 text-sm text-muted">아직 선별한 상품이 없습니다.</p>
+                  <p className="rounded-2xl bg-[#fff8ec] px-4 py-6 text-sm text-muted">아직 선별한 상품이 없습니다.</p>
                 ) : (
-                  <div className="grid grid-cols-2 gap-2 sm:gap-4">
+                  <div className="grid grid-cols-2 gap-[clamp(0.4rem,1vw,1rem)]">
                     {group.products.map((product) => (
                       <ProductCard key={product.id} product={product} />
                     ))}
                   </div>
                 )}
-              </div>
+              </section>
             ))}
           </div>
         </div>
