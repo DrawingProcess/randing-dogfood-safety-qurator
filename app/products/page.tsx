@@ -45,7 +45,7 @@ export default async function ProductsPage({
       {products.length === 0 ? (
         <p className="mt-10 rounded-3xl bg-card p-6 text-muted">이 조건에 맞는 선별 상품이 없습니다.</p>
       ) : (
-        <div className="mt-8 grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-2 gap-2 sm:gap-4">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

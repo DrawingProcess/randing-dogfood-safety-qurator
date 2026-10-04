@@ -28,27 +28,29 @@ const oursBenefits = [
   "견종, 나이, 기호도, 식성 표시",
 ];
 
-export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "dog" | "cat"; category: "food" | "snack"; products: Product[] }> }) {
-  const preview = groups.filter((group) => group.products.length > 0);
-
+export function LandingPage({
+  groups,
+}: {
+  groups: Array<{ title: string; pet: "dog" | "cat"; category: "food" | "snack"; products: Product[] }>;
+}) {
   return (
     <div className="bg-white">
-      <section className="mx-auto max-w-[82rem] px-4 py-8 sm:py-16 lg:py-20">
-        <p className="inline-flex rounded-full bg-[#fff6e4] px-3 py-1.5 text-xs font-medium text-ink sm:px-4 sm:py-2 sm:text-base">
+      <section className="mx-auto max-w-[82rem] px-[clamp(0.75rem,2vw,1.5rem)] py-[clamp(1.25rem,4vw,5rem)]">
+        <p className="inline-flex max-w-full rounded-full bg-[#fff6e4] px-[clamp(0.55rem,1.4vw,1rem)] py-[clamp(0.25rem,0.7vw,0.5rem)] text-[clamp(0.55rem,1.35vw,1rem)] font-medium leading-snug text-ink">
           믿고 먹이는 사료, 믿고 고르는 간식 큐레이션 마켓 믿고멍냥
         </p>
-        <div className="mt-5 grid items-center gap-6 sm:mt-8 sm:gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(24rem,0.8fr)] lg:gap-12">
-          <h1 className="min-w-0 text-[1.45rem] font-extrabold leading-[1.25] tracking-tight sm:text-[2.4rem] lg:text-[3.5rem]">
+        <div className="mt-[clamp(0.75rem,2.2vw,2.5rem)] grid grid-cols-2 items-center gap-[clamp(0.6rem,2.4vw,3rem)]">
+          <h1 className="min-w-0 text-[clamp(0.78rem,3.4vw,3.5rem)] font-extrabold leading-[1.25] tracking-tight">
             <span className="block whitespace-nowrap">아이가 매일 먹는 사료,</span>
             <span className="block whitespace-nowrap">아무거나 고르지 마세요.</span>
           </h1>
-          <div className="flex w-full flex-col lg:w-[34rem] lg:justify-self-end">
-            <p className="text-base leading-7 text-ink sm:text-[1.35rem] sm:leading-9">
+          <div className="flex min-w-0 w-full flex-col">
+            <p className="text-[clamp(0.58rem,1.7vw,1.35rem)] leading-[1.55] text-ink">
               성분부터 제조 정보까지 꼼꼼하게 살펴보고 선별한 <span className="whitespace-nowrap">사료와</span> 간식만 모았습니다.
             </p>
             <Link
               href="/products"
-              className="mt-5 inline-flex min-h-12 w-full items-center justify-center whitespace-nowrap rounded-full bg-yellow px-4 py-3 text-center text-sm font-extrabold text-ink sm:mt-6 sm:min-h-[4.25rem] sm:px-8 sm:py-5 sm:text-[clamp(0.95rem,3.6vw,1.5rem)] lg:min-h-[4.75rem]"
+              className="mt-[clamp(0.45rem,1.4vw,1.5rem)] inline-flex min-h-[clamp(1.7rem,5.2vw,4.75rem)] w-full items-center justify-center whitespace-nowrap rounded-full bg-yellow px-[clamp(0.45rem,1.6vw,2rem)] text-center text-[clamp(0.52rem,1.7vw,1.5rem)] font-extrabold text-ink"
             >
               큐레이션 사료 / 간식 보러가기
             </Link>
@@ -56,29 +58,32 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
         </div>
       </section>
 
-      <section className="mx-auto max-w-[82rem] px-4 pb-12 pt-2 sm:pb-16">
-        <h2 className="text-xl font-extrabold leading-snug sm:text-3xl lg:text-[2.75rem]">안심 사료를 찾기 위한 과정, 어떠셨나요?</h2>
-        <div className="mt-5 grid gap-2 sm:mt-8 sm:gap-3 sm:grid-cols-2">
+      <section className="mx-auto max-w-[82rem] px-[clamp(0.75rem,2vw,1.5rem)] pb-[clamp(1.5rem,4vw,4rem)] pt-[clamp(0.25rem,1vw,0.5rem)]">
+        <h2 className="text-[clamp(0.85rem,2.6vw,2.75rem)] font-extrabold leading-snug">안심 사료를 찾기 위한 과정, 어떠셨나요?</h2>
+        <div className="mt-[clamp(0.7rem,2vw,2rem)] grid grid-cols-2 gap-[clamp(0.35rem,1vw,0.75rem)]">
           {problems.map((quote) => (
-            <blockquote key={quote} className="rounded-2xl bg-[#fff6e4] px-4 py-4 text-left text-sm leading-7 sm:px-5 sm:py-5 sm:text-[1.35rem] sm:leading-9">
+            <blockquote
+              key={quote}
+              className="rounded-[clamp(0.7rem,1.6vw,1rem)] bg-[#fff6e4] px-[clamp(0.55rem,1.4vw,1.25rem)] py-[clamp(0.55rem,1.3vw,1.25rem)] text-left text-[clamp(0.58rem,1.6vw,1.35rem)] leading-[1.55]"
+            >
               “{quote}”
             </blockquote>
           ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-[82rem] px-4 pb-14 sm:pb-20">
-        <h2 className="text-xl font-extrabold leading-snug sm:text-3xl lg:text-[2.75rem]">믿고멍냥은 다릅니다.</h2>
-        <div className="mt-5 grid gap-3 sm:mt-8 sm:gap-4 lg:grid-cols-2">
-          <article className="rounded-[1.75rem] bg-[#fffaf2] p-5 sm:p-8">
-            <h3 className="text-lg font-extrabold sm:text-3xl lg:text-[2.75rem]">기존 소비 방식</h3>
-            <div className="mt-6 grid items-center gap-4 sm:mt-8 sm:grid-cols-[auto_1fr] sm:gap-10">
-              <p className="shrink-0 text-lg font-extrabold leading-snug sm:w-[11rem] sm:text-3xl">
+      <section className="mx-auto max-w-[82rem] px-[clamp(0.75rem,2vw,1.5rem)] pb-[clamp(1.75rem,5vw,5rem)]">
+        <h2 className="text-[clamp(0.85rem,2.6vw,2.75rem)] font-extrabold leading-snug">믿고멍냥은 다릅니다.</h2>
+        <div className="mt-[clamp(0.7rem,2vw,2rem)] grid grid-cols-2 gap-[clamp(0.4rem,1.2vw,1rem)]">
+          <article className="rounded-[clamp(0.8rem,2vw,1.75rem)] bg-[#fffaf2] p-[clamp(0.55rem,1.8vw,2rem)]">
+            <h3 className="text-[clamp(0.7rem,2.2vw,2.75rem)] font-extrabold">기존 소비 방식</h3>
+            <div className="mt-[clamp(0.55rem,1.8vw,2rem)] grid grid-cols-[auto_1fr] items-center gap-[clamp(0.4rem,1.6vw,2.5rem)]">
+              <p className="shrink-0 text-[clamp(0.58rem,1.9vw,1.875rem)] font-extrabold leading-snug">
                 최소 6단계의
                 <br />
                 구매 절차
               </p>
-              <ol className="space-y-2 text-sm font-medium sm:space-y-3 sm:text-[1.35rem]">
+              <ol className="space-y-[clamp(0.15rem,0.55vw,0.75rem)] text-[clamp(0.5rem,1.45vw,1.35rem)] font-medium">
                 {usualSteps.map((step, index) => (
                   <li key={step}>
                     {index + 1}. {step}
@@ -87,20 +92,20 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
               </ol>
             </div>
           </article>
-          <article className="rounded-[1.75rem] bg-yellow p-5 sm:p-8">
-            <h3 className="text-lg font-extrabold sm:text-3xl lg:text-[2.75rem]">믿고멍냥</h3>
-            <div className="mt-6 grid items-center gap-4 sm:mt-8 sm:grid-cols-[auto_1fr] sm:gap-8">
-              <p className="rounded-2xl bg-white px-4 py-4 text-left text-base font-extrabold leading-snug sm:max-w-[9.5rem] sm:px-5 sm:py-6 sm:text-[1.75rem]">
+          <article className="rounded-[clamp(0.8rem,2vw,1.75rem)] bg-yellow p-[clamp(0.55rem,1.8vw,2rem)]">
+            <h3 className="text-[clamp(0.7rem,2.2vw,2.75rem)] font-extrabold">믿고멍냥</h3>
+            <div className="mt-[clamp(0.55rem,1.8vw,2rem)] grid grid-cols-[auto_1fr] items-center gap-[clamp(0.35rem,1.4vw,2rem)]">
+              <p className="rounded-[clamp(0.55rem,1.2vw,1rem)] bg-white px-[clamp(0.4rem,1.2vw,1.25rem)] py-[clamp(0.45rem,1.3vw,1.5rem)] text-left text-[clamp(0.55rem,1.7vw,1.75rem)] font-extrabold leading-snug">
                 검색 단계
                 <br />
                 간소화
               </p>
-              <ul className="space-y-3 text-sm font-semibold leading-snug sm:space-y-4 sm:text-2xl">
+              <ul className="space-y-[clamp(0.25rem,0.8vw,1rem)] text-[clamp(0.5rem,1.55vw,1.5rem)] font-semibold leading-snug">
                 {oursBenefits.map((item) => (
-                  <li key={item} className="flex items-center gap-3 sm:gap-4">
+                  <li key={item} className="flex items-center gap-[clamp(0.25rem,0.8vw,1rem)]">
                     <span
                       aria-hidden
-                      className="flex h-6 w-6 shrink-0 items-center justify-center rounded-[0.2rem] border-[2.5px] border-ink text-sm font-extrabold leading-none sm:h-8 sm:w-8 sm:text-xl"
+                      className="flex h-[clamp(0.7rem,1.6vw,2rem)] w-[clamp(0.7rem,1.6vw,2rem)] shrink-0 items-center justify-center rounded-[0.15rem] border-[clamp(1.5px,0.25vw,2.5px)] border-ink text-[clamp(0.45rem,1.1vw,1.25rem)] font-extrabold leading-none"
                     >
                       ✓
                     </span>
@@ -109,7 +114,7 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
                 ))}
               </ul>
             </div>
-            <p className="mt-6 rounded-2xl bg-white/80 px-4 py-3 text-center text-sm font-extrabold sm:mt-8 sm:text-xl">
+            <p className="mt-[clamp(0.5rem,1.6vw,2rem)] rounded-[clamp(0.55rem,1.2vw,1rem)] bg-white/80 px-[clamp(0.4rem,1.2vw,1rem)] py-[clamp(0.3rem,0.9vw,0.75rem)] text-center text-[clamp(0.5rem,1.4vw,1.25rem)] font-extrabold">
               필터 설정 → 구매, 오직 2단계의 구매 절차
             </p>
           </article>
@@ -117,11 +122,11 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
       </section>
 
       <section id="products" className="border-t border-line bg-[#fff8ec]">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:py-16">
+        <div className="mx-auto max-w-6xl px-[clamp(0.75rem,2vw,1.5rem)] py-[clamp(1.5rem,4vw,4rem)]">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
-              <h2 className="text-xl font-extrabold sm:text-3xl lg:text-4xl">골라 둔 먹거리</h2>
-              <p className="mt-2 text-sm text-muted sm:text-base">강아지와 고양이, 사료와 간식만 먼저 보여드립니다.</p>
+              <h2 className="text-[clamp(1rem,2.6vw,2.25rem)] font-extrabold">골라 둔 먹거리</h2>
+              <p className="mt-2 text-[clamp(0.75rem,1.5vw,1rem)] text-muted">강아지와 고양이, 사료와 간식만 먼저 보여드립니다.</p>
             </div>
             <CategoryLinks
               links={[
@@ -132,17 +137,21 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
               ]}
             />
           </div>
-          <div className="mt-8 space-y-10">
-            {preview.map((group) => (
+          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+            {groups.map((group) => (
               <div key={group.title}>
-                <h3 className="mb-3 text-base font-bold sm:mb-4 sm:text-xl">
+                <h3 className="mb-3 text-[clamp(0.85rem,1.8vw,1.25rem)] font-bold">
                   {group.pet === "dog" ? "🐶" : "🐱"} {petLabels[group.pet]} {categoryLabels[group.category]}
                 </h3>
-                <div className="grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-3">
-                  {group.products.map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                  ))}
-                </div>
+                {group.products.length === 0 ? (
+                  <p className="rounded-2xl bg-card px-4 py-6 text-sm text-muted">아직 선별한 상품이 없습니다.</p>
+                ) : (
+                  <div className="grid grid-cols-2 gap-2 sm:gap-4">
+                    {group.products.map((product) => (
+                      <ProductCard key={product.id} product={product} />
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -150,29 +159,32 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:py-16">
-          <h2 className="text-xl font-extrabold sm:text-3xl lg:text-4xl">어려운 성분표 대신, 한눈에 확인하세요.</h2>
-          <p className="mt-3 max-w-2xl text-sm leading-7 text-muted sm:text-base">뱃지는 믿고멍냥의 자체 선별·확인 기준입니다. 안전을 단정하는 표시가 아닙니다.</p>
+        <div className="mx-auto max-w-6xl px-[clamp(0.75rem,2vw,1.5rem)] py-[clamp(1.5rem,4vw,4rem)]">
+          <h2 className="text-[clamp(1rem,2.6vw,2.25rem)] font-extrabold">어려운 성분표 대신, 한눈에 확인하세요.</h2>
+          <p className="mt-3 max-w-2xl text-[clamp(0.75rem,1.5vw,1rem)] leading-7 text-muted">뱃지는 믿고멍냥의 자체 선별·확인 기준입니다. 안전을 단정하는 표시가 아닙니다.</p>
           <div className="mt-6">
             <BadgeExplorer />
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-10 sm:py-16">
-        <h2 className="max-w-3xl text-xl font-extrabold leading-snug sm:text-3xl lg:text-4xl">아이에게 먹이는 것이니까, 판매하는 것보다 선별하는 것을 먼저 생각합니다.</h2>
-        <p className="mt-4 max-w-2xl text-sm leading-7 text-muted sm:mt-5 sm:text-base sm:leading-8">
+      <section className="mx-auto max-w-6xl px-[clamp(0.75rem,2vw,1.5rem)] py-[clamp(1.5rem,4vw,4rem)]">
+        <h2 className="max-w-3xl text-[clamp(1rem,2.6vw,2.25rem)] font-extrabold leading-snug">아이에게 먹이는 것이니까, 판매하는 것보다 선별하는 것을 먼저 생각합니다.</h2>
+        <p className="mt-4 max-w-2xl text-[clamp(0.75rem,1.5vw,1rem)] leading-7 text-muted">
           우리가 정한 기준을 충족하지 못하거나 보호자가 확인하기 어려운 정보가 있는 제품은 큐레이션 대상에서 제외할 수 있습니다. 상품 정보와 기준을 최대한 투명하게 공개하겠습니다.
         </p>
       </section>
 
-      <section className="px-4 pb-12 sm:pb-16">
-        <div className="mx-auto max-w-6xl rounded-[2rem] bg-yellow px-5 py-8 text-ink sm:px-10 sm:py-12">
-          <h2 className="text-xl font-extrabold sm:text-3xl lg:text-4xl">먼저 경험해보세요.</h2>
-          <p className="mt-3 max-w-2xl text-sm leading-7 text-ink/80 sm:mt-4 sm:text-base sm:leading-8">
+      <section className="px-[clamp(0.75rem,2vw,1.5rem)] pb-[clamp(1.75rem,4vw,4rem)]">
+        <div className="mx-auto max-w-6xl rounded-[clamp(1rem,3vw,2rem)] bg-yellow px-[clamp(1rem,2.4vw,2.5rem)] py-[clamp(1.25rem,3vw,3rem)] text-ink">
+          <h2 className="text-[clamp(1rem,2.6vw,2.25rem)] font-extrabold">먼저 경험해보세요.</h2>
+          <p className="mt-3 max-w-2xl text-[clamp(0.75rem,1.5vw,1rem)] leading-7 text-ink/80">
             아직 정식 서비스를 준비하고 있습니다. 서비스가 정식으로 시작되기 전 안심 먹거리에 관심 있는 보호자분들을 대상으로 <strong>무료 샘플을 보내드리는 이벤트를 진행합니다.</strong> 어떤 먹거리를 선별하면 좋을지 보호자님의 의견도 함께 듣고 있습니다.
           </p>
-          <SampleCtaLink source="landing" className="mt-6 inline-flex rounded-full bg-[#efc14a] px-5 py-3 text-sm font-extrabold text-ink sm:mt-8 sm:px-7 sm:py-3.5 sm:text-lg">
+          <SampleCtaLink
+            source="landing"
+            className="mt-[clamp(0.75rem,2vw,2rem)] inline-flex rounded-full bg-[#efc14a] px-[clamp(0.9rem,1.8vw,1.75rem)] py-[clamp(0.55rem,1.2vw,0.9rem)] text-[clamp(0.75rem,1.6vw,1.125rem)] font-extrabold text-ink"
+          >
             안심 먹거리 샘플 받아보기 →
           </SampleCtaLink>
         </div>
