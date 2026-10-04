@@ -183,7 +183,7 @@ export function LandingPage({
           </p>
           <SampleCtaLink
             source="landing"
-            className="mt-[clamp(0.75rem,2vw,2rem)] inline-flex rounded-full bg-[#efc14a] px-[clamp(0.9rem,1.8vw,1.75rem)] py-[clamp(0.55rem,1.2vw,0.9rem)] text-[clamp(0.75rem,1.6vw,1.125rem)] font-extrabold text-ink"
+            className="mt-[clamp(0.75rem,2vw,2rem)] inline-flex rounded-full bg-white px-[clamp(0.9rem,1.8vw,1.75rem)] py-[clamp(0.55rem,1.2vw,0.9rem)] text-[clamp(0.75rem,1.6vw,1.125rem)] font-extrabold text-ink"
           >
             안심 먹거리 샘플 받아보기 →
           </SampleCtaLink>
