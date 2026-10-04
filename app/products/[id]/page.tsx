@@ -27,7 +27,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   const images = product.images.length ? product.images : [{ id: "primary", image_url: product.image_url, alt_text: product.name, sort_order: 0, product_id: product.id, created_at: product.created_at }];
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-8">
+    <main className="mx-auto max-w-[82rem] px-4 py-8">
       <TrackOnMount event_name="product_detail_viewed" page={`/products/${product.id}`} product_id={product.id} pet_type={product.pet_type} metadata={{ category: product.category }} />
       <Link href="/products" className="text-sm text-muted">선별 상품</Link>
       <div className="mt-4 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
