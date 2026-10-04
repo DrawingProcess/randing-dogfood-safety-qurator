@@ -73,11 +73,11 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               안심 먹거리 샘플 받아보기 →
             </SampleCtaLink>
           </div>
-          <p className="mt-10 text-xs leading-5 text-muted">
-            사료 및 간식은 실제 판매하지 않으며, 임의로 배치한 타사의 제품들입니다. 어떠한 연관성도 존재하지 않습니다.
-          </p>
         </div>
       </div>
+      <p className="mt-12 text-[11px] leading-5 text-muted">
+        사료 및 간식은 실제 판매하지 않으며, 임의로 배치한 타사의 제품들입니다. 어떠한 연관성도 존재하지 않습니다.
+      </p>
     </main>
   );
 }
