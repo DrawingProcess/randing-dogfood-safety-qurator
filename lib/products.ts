@@ -80,9 +80,10 @@ export async function getProduct(id: string, options?: { includeInactive?: boole
 
 export function previewGroups(products: Product[]) {
   const groups = [
-    { title: "강아지 사료", pet: "dog" as const, category: "food" as const, limit: 3 },
+    { title: "강아지 사료", pet: "dog" as const, category: "food" as const, limit: 2 },
     { title: "강아지 간식", pet: "dog" as const, category: "snack" as const, limit: 2 },
     { title: "고양이 사료", pet: "cat" as const, category: "food" as const, limit: 2 },
+    { title: "고양이 간식", pet: "cat" as const, category: "snack" as const, limit: 2 },
   ];
   return groups.map((group) => ({
     ...group,
