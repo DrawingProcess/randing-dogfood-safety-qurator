@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { GATE_COOKIE, gateToken, isGateOpen, safeNextPath } from "@/lib/auth";
+import { SKIP_TRACK_COOKIE, SKIP_TRACK_VALUE } from "@/lib/gate-cookies";
 import { badgeCatalog } from "@/lib/badges";
 import { createServiceClient } from "@/lib/supabase/server";
 import { hasServiceRole } from "@/lib/supabase/env";
@@ -31,12 +32,19 @@ export async function unlockGate(_prev: ActionState, formData: FormData): Promis
   const token = gateToken();
   if (!token) return { error: "게이트를 열 수 없습니다." };
   const jar = await cookies();
-  jar.set(GATE_COOKIE, token, {
-    httpOnly: true,
-    sameSite: "lax",
+  const cookieBase = {
+    sameSite: "lax" as const,
     path: "/",
     maxAge: 60 * 60 * 24 * 14,
     secure: process.env.NODE_ENV === "production",
+  };
+  jar.set(GATE_COOKIE, token, {
+    ...cookieBase,
+    httpOnly: true,
+  });
+  jar.set(SKIP_TRACK_COOKIE, SKIP_TRACK_VALUE, {
+    ...cookieBase,
+    httpOnly: false,
   });
   redirect(safeNextPath(formData.get("next")));
 }
@@ -44,6 +52,7 @@ export async function unlockGate(_prev: ActionState, formData: FormData): Promis
 export async function lockGate() {
   const jar = await cookies();
   jar.delete(GATE_COOKIE);
+  jar.delete({ name: SKIP_TRACK_COOKIE, path: "/" });
   redirect("/analysis");
 }
 

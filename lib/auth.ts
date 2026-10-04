@@ -1,8 +1,9 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
+import { GATE_COOKIE } from "@/lib/gate-cookies";
 import { runtimeEnv } from "@/lib/runtime-env";
 
-export const GATE_COOKIE = "mmn_gate";
+export { GATE_COOKIE };
 
 export function gateToken() {
   const password = runtimeEnv("ANALYSIS_PASSWORD");
