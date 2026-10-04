@@ -73,9 +73,12 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
           <article className="rounded-[1.75rem] bg-[#fffaf2] p-5 sm:p-8">
             <h3 className="text-center text-lg font-extrabold sm:text-3xl lg:text-[2.75rem]">기존 소비 방식</h3>
             <div className="mt-6 grid items-center gap-4 sm:mt-8 sm:grid-cols-[auto_1fr] sm:gap-10">
-              <p className="rounded-2xl bg-white px-4 py-4 text-center text-base font-extrabold leading-snug sm:px-5 sm:py-6 sm:text-[1.75rem]">
-                <span className="block whitespace-nowrap">최소 6단계의</span>
-                <span className="block whitespace-nowrap">구매 절차</span>
+              <p className="flex min-h-[5.5rem] items-center justify-center rounded-2xl bg-white px-4 py-4 text-center text-base font-extrabold leading-snug sm:min-h-[8.5rem] sm:min-w-[9.5rem] sm:px-5 sm:py-6 sm:text-[1.75rem]">
+                <span>
+                  최소 6단계의
+                  <br />
+                  구매 절차
+                </span>
               </p>
               <ol className="space-y-2 text-sm font-medium sm:space-y-3 sm:text-[1.35rem]">
                 {usualSteps.map((step, index) => (
@@ -89,10 +92,12 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
           <article className="rounded-[1.75rem] bg-yellow p-5 sm:p-8">
             <h3 className="text-center text-lg font-extrabold sm:text-3xl lg:text-[2.75rem]">믿고멍냥</h3>
             <div className="mt-6 grid items-center gap-4 sm:mt-8 sm:grid-cols-[auto_1fr] sm:gap-8">
-              <p className="rounded-2xl bg-white px-4 py-4 text-center text-base font-extrabold leading-snug sm:max-w-[9.5rem] sm:px-5 sm:py-6 sm:text-[1.75rem]">
-                검색 단계
-                <br />
-                간소화
+              <p className="flex min-h-[5.5rem] items-center justify-center rounded-2xl bg-white px-4 py-4 text-center text-base font-extrabold leading-snug sm:min-h-[8.5rem] sm:min-w-[9.5rem] sm:px-5 sm:py-6 sm:text-[1.75rem]">
+                <span>
+                  검색 단계
+                  <br />
+                  간소화
+                </span>
               </p>
               <ul className="space-y-3 text-sm font-semibold leading-snug sm:space-y-4 sm:text-2xl">
                 {oursBenefits.map((item) => (
