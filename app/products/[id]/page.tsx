@@ -69,7 +69,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           <div className="mt-10 rounded-3xl bg-yellow/60 p-5">
             <p className="font-semibold">정식 판매 전에 의견을 듣고 있습니다.</p>
             <p className="mt-2 text-sm leading-6 text-muted">샘플은 판매 상품이 아닙니다. 관심 있는 보호자에게 먹거리를 보내며 선택 기준을 확인하는 이벤트입니다.</p>
-            <SampleCtaLink source="product_detail" productId={product.id} petType={product.pet_type} className="mt-4 inline-flex rounded-full bg-[#efc14a] px-5 py-3 font-semibold text-ink">
+            <SampleCtaLink source="product_detail" productId={product.id} petType={product.pet_type} className="mt-4 inline-flex rounded-full bg-white px-5 py-3 font-semibold text-ink">
               안심 먹거리 샘플 받아보기 →
             </SampleCtaLink>
           </div>

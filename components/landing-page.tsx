@@ -172,7 +172,7 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
           <p className="mt-3 max-w-2xl text-sm leading-7 text-ink/80 sm:mt-4 sm:text-base sm:leading-8">
             아직 정식 서비스를 준비하고 있습니다. 서비스가 정식으로 시작되기 전 안심 먹거리에 관심 있는 보호자분들을 대상으로 <strong>무료 샘플을 보내드리는 이벤트를 진행합니다.</strong> 어떤 먹거리를 선별하면 좋을지 보호자님의 의견도 함께 듣고 있습니다.
           </p>
-          <SampleCtaLink source="landing" className="mt-6 inline-flex rounded-full bg-[#efc14a] px-5 py-3 text-sm font-extrabold text-ink sm:mt-8 sm:px-7 sm:py-3.5 sm:text-lg">
+          <SampleCtaLink source="landing" className="mt-6 inline-flex rounded-full bg-white px-5 py-3 text-sm font-extrabold text-ink sm:mt-8 sm:px-7 sm:py-3.5 sm:text-lg">
             안심 먹거리 샘플 받아보기 →
           </SampleCtaLink>
         </div>
