@@ -73,10 +73,9 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
           <article className="rounded-[1.75rem] bg-[#fffaf2] p-5 sm:p-8">
             <h3 className="text-center text-lg font-extrabold sm:text-3xl lg:text-[2.75rem]">기존 소비 방식</h3>
             <div className="mt-6 grid items-center gap-4 sm:mt-8 sm:grid-cols-[auto_1fr] sm:gap-10">
-              <p className="rounded-2xl bg-white px-4 py-4 text-center text-base font-extrabold leading-snug sm:max-w-[11rem] sm:px-5 sm:py-6 sm:text-[1.75rem]">
-                최소 6단계의
-                <br />
-                구매 절차
+              <p className="rounded-2xl bg-white px-4 py-4 text-center text-base font-extrabold leading-snug sm:px-5 sm:py-6 sm:text-[1.75rem]">
+                <span className="block whitespace-nowrap">최소 6단계의</span>
+                <span className="block whitespace-nowrap">구매 절차</span>
               </p>
               <ol className="space-y-2 text-sm font-medium sm:space-y-3 sm:text-[1.35rem]">
                 {usualSteps.map((step, index) => (
