@@ -73,7 +73,7 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
           <article className="rounded-[1.75rem] bg-[#fffaf2] p-5 sm:p-8">
             <h3 className="text-center text-lg font-extrabold sm:text-3xl lg:text-[2.75rem]">기존 소비 방식</h3>
             <div className="mt-6 grid items-center gap-4 sm:mt-8 sm:grid-cols-[auto_1fr] sm:gap-10">
-              <p className="shrink-0 text-lg font-extrabold leading-snug sm:w-[11rem] sm:text-3xl">
+              <p className="rounded-2xl bg-white px-4 py-4 text-center text-base font-extrabold leading-snug sm:max-w-[11rem] sm:px-5 sm:py-6 sm:text-[1.75rem]">
                 최소 6단계의
                 <br />
                 구매 절차
@@ -117,18 +117,18 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
       </section>
 
       <section id="products" className="border-t border-line bg-[#fff8ec]">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:py-16">
+        <div className="mx-auto max-w-[82rem] px-4 py-10 sm:py-16">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <h2 className="text-xl font-extrabold sm:text-3xl lg:text-4xl">골라 둔 먹거리</h2>
-              <p className="mt-2 text-sm text-muted sm:text-base">강아지와 고양이, 사료와 간식만 먼저 보여드립니다.</p>
+              <p className="mt-2 text-sm text-muted sm:text-base">강아지와 고양이용 사료 및 간식만 먼저 보여드립니다.</p>
             </div>
             <CategoryLinks
               links={[
                 { href: "/products?pet=dog&category=food", label: "🐶 강아지 사료", pet: "dog", category: "food" },
                 { href: "/products?pet=dog&category=snack", label: "🐶 강아지 간식", pet: "dog", category: "snack" },
-                { href: "/products?pet=cat&category=food", label: "🐱 고양이 사료", pet: "cat", category: "food", className: "rounded-full bg-[#fff3c4] px-3 py-2" },
-                { href: "/products?pet=cat&category=snack", label: "🐱 고양이 간식", pet: "cat", category: "snack", className: "rounded-full bg-[#fff3c4] px-3 py-2" },
+                { href: "/products?pet=cat&category=food", label: "🐱 고양이 사료", pet: "cat", category: "food" },
+                { href: "/products?pet=cat&category=snack", label: "🐱 고양이 간식", pet: "cat", category: "snack" },
               ]}
             />
           </div>
@@ -150,7 +150,7 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:py-16">
+        <div className="mx-auto max-w-[82rem] px-4 py-10 sm:py-16">
           <h2 className="text-xl font-extrabold sm:text-3xl lg:text-4xl">어려운 성분표 대신, 한눈에 확인하세요.</h2>
           <p className="mt-3 max-w-2xl text-sm leading-7 text-muted sm:text-base">뱃지는 믿고멍냥의 자체 선별·확인 기준입니다. 안전을 단정하는 표시가 아닙니다.</p>
           <div className="mt-6">
@@ -159,7 +159,7 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-10 sm:py-16">
+      <section className="mx-auto max-w-[82rem] px-4 py-10 sm:py-16">
         <h2 className="max-w-3xl text-xl font-extrabold leading-snug sm:text-3xl lg:text-4xl">아이에게 먹이는 것이니까, 판매하는 것보다 선별하는 것을 먼저 생각합니다.</h2>
         <p className="mt-4 max-w-2xl text-sm leading-7 text-muted sm:mt-5 sm:text-base sm:leading-8">
           우리가 정한 기준을 충족하지 못하거나 보호자가 확인하기 어려운 정보가 있는 제품은 큐레이션 대상에서 제외할 수 있습니다. 상품 정보와 기준을 최대한 투명하게 공개하겠습니다.
@@ -167,7 +167,7 @@ export function LandingPage({ groups }: { groups: Array<{ title: string; pet: "d
       </section>
 
       <section className="px-4 pb-12 sm:pb-16">
-        <div className="mx-auto max-w-6xl rounded-[2rem] bg-yellow px-5 py-8 text-ink sm:px-10 sm:py-12">
+        <div className="mx-auto max-w-[82rem] rounded-[2rem] bg-yellow px-5 py-8 text-ink sm:px-10 sm:py-12">
           <h2 className="text-xl font-extrabold sm:text-3xl lg:text-4xl">먼저 경험해보세요.</h2>
           <p className="mt-3 max-w-2xl text-sm leading-7 text-ink/80 sm:mt-4 sm:text-base sm:leading-8">
             아직 정식 서비스를 준비하고 있습니다. 서비스가 정식으로 시작되기 전 안심 먹거리에 관심 있는 보호자분들을 대상으로 <strong>무료 샘플을 보내드리는 이벤트를 진행합니다.</strong> 어떤 먹거리를 선별하면 좋을지 보호자님의 의견도 함께 듣고 있습니다.

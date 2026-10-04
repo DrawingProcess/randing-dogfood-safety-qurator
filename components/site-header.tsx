@@ -12,7 +12,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-20 border-b border-line/80 bg-[#fff8ec]/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
+      <div className="mx-auto flex max-w-[82rem] items-center justify-between gap-3 px-4 py-3">
         <Link href="/" className="font-bold tracking-tight" onClick={() => trackEvent({ event_name: "navigation_clicked", metadata: { target: "home" } })}>
           믿고멍냥
         </Link>
