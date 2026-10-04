@@ -12,7 +12,7 @@ import { badgeTypes, categories, petTypes, productStatuses, sizeTypes, type Badg
 import { isUuid } from "@/lib/utils";
 import { runtimeEnv } from "@/lib/runtime-env";
 
-export type ActionState = { error?: string; ok?: boolean } | null;
+export type ActionState = { error?: string; ok?: boolean; deleted?: number } | null;
 
 function samePassword(input: string, expected: string) {
   if (input.length !== expected.length) return false;
@@ -215,4 +215,16 @@ export async function importSurvey(_prev: ActionState, formData: FormData): Prom
   }
   revalidatePath("/analysis");
   return { ok: true };
+}
+
+export async function resetAnalyticsEvents(_prev: ActionState, _formData?: FormData): Promise<ActionState> {
+  const auth = await requireAdmin();
+  if ("error" in auth) return { error: auth.error };
+  const { count, error } = await auth.client
+    .from("analytics_events")
+    .delete({ count: "exact" })
+    .gte("created_at", "1970-01-01");
+  if (error) return { error: error.message };
+  revalidatePath("/analysis");
+  return { ok: true, deleted: count ?? 0 };
 }
