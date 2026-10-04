@@ -15,7 +15,7 @@ export function CategoryLinks({
         <Link
           key={link.href}
           href={link.href}
-          className={link.className ?? "rounded-full bg-yellow px-3 py-2"}
+          className={link.className ?? "rounded-full bg-leaf px-3 py-2"}
           onClick={() => {
             trackEvent({
               event_name: "category_view",

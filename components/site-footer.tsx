@@ -9,7 +9,7 @@ export function SiteFooter() {
 
   return (
     <footer className="mt-auto border-t border-line">
-      <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-sm text-muted sm:flex-row sm:items-end sm:justify-between">
+      <div className="mx-auto flex max-w-[82rem] flex-col gap-3 px-4 py-8 text-sm text-muted sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="font-semibold text-ink">믿고멍냥</p>
           <p className="mt-1 max-w-md leading-6">강아지와 고양이를 위한 반려동물 먹거리 큐레이션 마켓. 상품 정보는 자체 확인 기준입니다.</p>

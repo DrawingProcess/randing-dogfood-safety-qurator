@@ -42,7 +42,7 @@ export function ProductCard({ product }: { product: Product }) {
           <p className="text-sm font-semibold sm:text-base">{formatPrice(product.price)}</p>
           <Link
             href={`/products/${product.id}`}
-            className="rounded-full bg-yellow px-2.5 py-1.5 text-xs font-semibold sm:px-3 sm:py-2 sm:text-sm"
+            className="rounded-full bg-leaf px-2.5 py-1.5 text-xs font-semibold sm:px-3 sm:py-2 sm:text-sm"
             onClick={() =>
               trackEvent({
                 event_name: "product_card_clicked",

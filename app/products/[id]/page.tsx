@@ -27,7 +27,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   const images = product.images.length ? product.images : [{ id: "primary", image_url: product.image_url, alt_text: product.name, sort_order: 0, product_id: product.id, created_at: product.created_at }];
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-8">
+    <main className="mx-auto max-w-[82rem] px-4 py-8">
       <TrackOnMount event_name="product_detail_viewed" page={`/products/${product.id}`} product_id={product.id} pet_type={product.pet_type} metadata={{ category: product.category }} />
       <Link href="/products" className="text-sm text-muted">선별 상품</Link>
       <div className="mt-4 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
@@ -69,12 +69,15 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           <div className="mt-10 rounded-3xl bg-yellow/60 p-5">
             <p className="font-semibold">정식 판매 전에 의견을 듣고 있습니다.</p>
             <p className="mt-2 text-sm leading-6 text-muted">샘플은 판매 상품이 아닙니다. 관심 있는 보호자에게 먹거리를 보내며 선택 기준을 확인하는 이벤트입니다.</p>
-            <SampleCtaLink source="product_detail" productId={product.id} petType={product.pet_type} className="mt-4 inline-flex rounded-full bg-[#efc14a] px-5 py-3 font-semibold text-ink">
+            <SampleCtaLink source="product_detail" productId={product.id} petType={product.pet_type} className="mt-4 inline-flex rounded-full bg-white px-5 py-3 font-semibold text-ink">
               안심 먹거리 샘플 받아보기 →
             </SampleCtaLink>
           </div>
         </div>
       </div>
+      <p className="mt-12 text-[11px] leading-5 text-muted">
+        사료 및 간식은 실제 판매하지 않으며, 임의로 배치한 타사의 제품들입니다. 어떠한 연관성도 존재하지 않습니다.
+      </p>
     </main>
   );
 }

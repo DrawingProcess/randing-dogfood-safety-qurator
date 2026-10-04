@@ -24,7 +24,7 @@ export default async function ProductsPage({
   const { products, source } = await listProducts({ pet, category, size });
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-8">
+    <main className="mx-auto max-w-[82rem] px-4 py-8">
       <TrackOnMount
         event_name="category_view"
         page="/products"
