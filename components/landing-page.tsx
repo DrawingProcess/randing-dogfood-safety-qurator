@@ -51,12 +51,12 @@ export function LandingPage({
             <p className="text-[clamp(0.58rem,1.7vw,1.35rem)] leading-[1.55] text-ink">
               성분부터 제조 정보까지 꼼꼼하게 살펴보고 선별한 <span className="whitespace-nowrap">사료와</span> 간식만 모았습니다.
             </p>
-            <Link
-              href="/products"
+            <SampleCtaLink
+              source="landing"
               className="mt-[clamp(0.35rem,1.4vw,1.5rem)] inline-flex min-h-[clamp(1.15rem,5.2vw,4.75rem)] w-full items-center justify-center whitespace-nowrap rounded-full bg-yellow px-[clamp(0.35rem,1.6vw,2rem)] text-center text-[clamp(0.42rem,1.7vw,1.5rem)] font-extrabold text-ink"
             >
-              큐레이션 사료 / 간식 보러가기
-            </Link>
+              샘플 받아보기 →
+            </SampleCtaLink>
           </div>
         </div>
       </section>
@@ -184,16 +184,13 @@ export function LandingPage({
 
       <section className="px-[clamp(0.75rem,2vw,1.5rem)] pb-[clamp(1.75rem,4vw,4rem)]">
         <div className="mx-auto max-w-[82rem] rounded-[clamp(1rem,3vw,2rem)] bg-yellow px-[clamp(1rem,2.4vw,2.5rem)] py-[clamp(1.25rem,3vw,3rem)] text-ink">
-          <h2 className="text-[clamp(1rem,2.6vw,2.25rem)] font-extrabold">먼저 경험해보세요.</h2>
-          <p className="mt-3 max-w-2xl text-[clamp(0.75rem,1.5vw,1rem)] leading-7 text-ink/80">
-            아직 정식 서비스를 준비하고 있습니다. 서비스가 정식으로 시작되기 전 안심 먹거리에 관심 있는 보호자분들을 대상으로 <strong>무료 샘플을 보내드리는 이벤트를 진행합니다.</strong> 어떤 먹거리를 선별하면 좋을지 보호자님의 의견도 함께 듣고 있습니다.
-          </p>
-          <SampleCtaLink
-            source="landing"
+          <h2 className="text-[clamp(1rem,2.6vw,2.25rem)] font-extrabold">선별한 사료와 간식을 둘러보세요.</h2>
+          <Link
+            href="/products"
             className="mt-[clamp(0.75rem,2vw,2rem)] inline-flex rounded-full bg-white px-[clamp(0.9rem,1.8vw,1.75rem)] py-[clamp(0.55rem,1.2vw,0.9rem)] text-[clamp(0.75rem,1.6vw,1.125rem)] font-extrabold text-ink"
           >
-            안심 먹거리 샘플 받아보기 →
-          </SampleCtaLink>
+            큐레이션 사료 / 간식 보러가기
+          </Link>
         </div>
       </section>
     </div>
