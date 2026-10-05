@@ -87,6 +87,15 @@ export function AnalysisDashboard({ data }: { data: DashboardData }) {
         </div>
       </section>
 
+      <section className="mt-8 rounded-3xl border border-line bg-card p-5">
+        <h2 className="text-xl font-bold">유입 플랫폼</h2>
+        <p className="mt-1 text-sm leading-6 text-muted">
+          세션이 처음 들어온 경로입니다. 인스타·카카오처럼 앱 안 브라우저는 이전 주소를 숨기는 경우가 많아서,
+          공유 링크에 <code className="rounded bg-background px-1">?utm_source=instagram</code> 을 붙이면 더 정확히 집계됩니다.
+        </p>
+        <CountItems items={data.sources} empty="유입 정보가 있는 방문이 아직 없습니다." />
+      </section>
+
       <section className="mt-8 grid gap-4 lg:grid-cols-2">
         <article className="rounded-3xl border border-line bg-card p-5">
           <h2 className="text-xl font-bold">강아지 / 고양이</h2>
