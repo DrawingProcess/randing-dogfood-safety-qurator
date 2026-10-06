@@ -4,6 +4,7 @@ import { ProductCard } from "@/components/product-card";
 import { TrackOnMount } from "@/components/track";
 import { filterSizeForPet } from "@/lib/labels";
 import { listProducts } from "@/lib/products";
+import { filterSizeForPet } from "@/lib/labels";
 import { asCategory, asPetType, asSizeType } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
