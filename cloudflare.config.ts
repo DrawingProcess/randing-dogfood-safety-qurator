@@ -32,7 +32,7 @@ function runtimeBindings() {
 
 export default defineConfig({
   worker: defineWorker({
-    name: "trust-paw",
+    name: "midgo-pet",
     entrypoint: "vinext/server/fetch-handler",
     compatibilityDate: "2026-10-02",
     compatibilityFlags: ["nodejs_compat", "nodejs_compat_populate_process_env"],
