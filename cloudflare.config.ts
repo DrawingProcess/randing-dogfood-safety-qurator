@@ -32,7 +32,7 @@ function runtimeBindings() {
 
 export default defineConfig({
   worker: defineWorker({
-    name: "midgo-pet",
+    name: process.env.WRANGLER_CI_OVERRIDE_NAME || "midgo-pet",
     entrypoint: "vinext/server/fetch-handler",
     compatibilityDate: "2026-10-02",
     compatibilityFlags: ["nodejs_compat", "nodejs_compat_populate_process_env"],
