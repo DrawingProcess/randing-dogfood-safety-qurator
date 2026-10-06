@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { acquisitionMetadata, getAcquisition } from "@/lib/acquisition";
 import type { EventName, PetType } from "@/lib/types";
 
 const SESSION_KEY = "mmn_session_id";
@@ -26,6 +27,10 @@ export function trackEvent(input: TrackInput) {
     session_id: getSessionId(),
     page: window.location.pathname,
     ...input,
+    metadata: {
+      ...acquisitionMetadata(getAcquisition()),
+      ...input.metadata,
+    },
   });
   void fetch("/api/analytics", {
     method: "POST",

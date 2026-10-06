@@ -1,4 +1,5 @@
 import type { SurveyResponse } from "@/lib/types";
+import { platformLabel } from "@/lib/labels";
 import { hasServiceRole } from "@/lib/supabase/env";
 import { createServiceClient } from "@/lib/supabase/server";
 import { percent } from "@/lib/utils";
@@ -60,6 +61,7 @@ export type DashboardData = {
     spends: Array<{ label: string; count: number }>;
     brands: Array<{ label: string; count: number }>;
   };
+  sources: Array<{ label: string; count: number }>;
   responses: SurveyResponse[];
 };
 
@@ -104,6 +106,7 @@ function emptyDashboard(notice: string | null): DashboardData {
     features: [],
     sampleConcerns: [],
     purchase: { channels: [], frequencies: [], spends: [], brands: [] },
+    sources: [],
     responses: [],
   };
 }
@@ -143,13 +146,14 @@ export async function loadDashboard(): Promise<DashboardData> {
   const client = createServiceClient();
   if (!client) return emptyDashboard("Supabase에 연결하지 못했습니다.");
 
-  const [funnelRes, productRes, petRes, categoryRes, surveyRes, sampleRes] = await Promise.all([
+  const [funnelRes, productRes, petRes, categoryRes, surveyRes, sampleRes, sourceRes] = await Promise.all([
     client.from("analytics_funnel").select("*").single(),
     client.from("analytics_product_stats").select("*").order("detail_views", { ascending: false }),
     client.from("analytics_pet_type_stats").select("*").single(),
     client.from("analytics_category_stats").select("*"),
     client.from("survey_responses").select("*").order("created_at", { ascending: false }).limit(500),
     client.from("analytics_events").select("metadata").eq("event_name", "sample_form_completed").limit(2000),
+    client.from("analytics_events").select("session_id, metadata").not("metadata->>acq_platform", "is", null).limit(4000),
   ]);
 
   if (funnelRes.error) {
@@ -207,6 +211,16 @@ export async function loadDashboard(): Promise<DashboardData> {
     }),
   );
 
+  const seenSessions = new Set<string>();
+  const sourcePlatforms: string[] = [];
+  for (const row of sourceRes.error ? [] : sourceRes.data ?? []) {
+    if (seenSessions.has(row.session_id)) continue;
+    const metadata = row.metadata as { acq_platform?: unknown } | null;
+    if (typeof metadata?.acq_platform !== "string" || !metadata.acq_platform) continue;
+    seenSessions.add(row.session_id);
+    sourcePlatforms.push(platformLabel(metadata.acq_platform));
+  }
+
   return {
     configured: true,
     notice: null,
@@ -241,6 +255,7 @@ export async function loadDashboard(): Promise<DashboardData> {
       spends: tally(responses.map((row) => row.monthly_spend)),
       brands: tally(responses.map((row) => row.current_brand)),
     },
+    sources: tally(sourcePlatforms),
     responses,
   };
 }

@@ -10,6 +10,25 @@ export const categoryLabels: Record<Category, string> = {
   snack: "간식",
 };
 
+export const platformLabels: Record<string, string> = {
+  instagram: "인스타그램",
+  facebook: "페이스북",
+  youtube: "유튜브",
+  tiktok: "틱톡",
+  threads: "Threads",
+  x: "X",
+  google: "구글",
+  naver: "네이버",
+  kakao: "카카오",
+  linkedin: "링크드인",
+  other: "기타",
+  direct: "직접 방문",
+};
+
+export function platformLabel(platform: string) {
+  return platformLabels[platform] ?? platform;
+}
+
 export const sizeLabels: Record<SizeType, string> = {
   small: "소형견",
   medium: "중형견",
