@@ -60,7 +60,7 @@ export function LandingPage({
                 source="landing"
                 className="relative inline-flex min-h-[clamp(1.15rem,5.2vw,4.75rem)] w-full items-center justify-center whitespace-nowrap rounded-full bg-yellow px-[clamp(0.35rem,1.6vw,2rem)] text-center text-[clamp(0.42rem,1.7vw,1.5rem)] font-extrabold text-ink"
               >
-                맞춤 안심 사료 찾아보기 →
+                맞춤 사료 추천 확인 →
               </SampleCtaLink>
             </div>
           </div>
