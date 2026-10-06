@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { BadgeExplorer } from "@/components/badge-explorer";
 import { CategoryLinks } from "@/components/category-links";
+import { PeekingPets, quoteCharacters } from "@/components/characters";
 import { ProductCard } from "@/components/product-card";
 import { SampleCtaLink } from "@/components/sample-cta";
 import { categoryLabels, petLabels } from "@/lib/labels";
 import type { Product } from "@/lib/types";
+
+const quoteFaceClass = "h-[clamp(1.55rem,4.4vw,3.4rem)] w-[clamp(1.55rem,4.4vw,3.4rem)] shrink-0";
 
 const problems = [
   "이 사료 성분 논란 있었던 것 같은데...?",
@@ -51,12 +54,15 @@ export function LandingPage({
             <p className="text-[clamp(0.58rem,1.7vw,1.35rem)] leading-[1.55] text-ink">
               성분부터 제조 정보까지 꼼꼼하게 살펴보고 선별한 <span className="whitespace-nowrap">사료와</span> 간식만 모았습니다.
             </p>
-            <SampleCtaLink
-              source="landing"
-              className="mt-[clamp(0.35rem,1.4vw,1.5rem)] inline-flex min-h-[clamp(1.15rem,5.2vw,4.75rem)] w-full items-center justify-center whitespace-nowrap rounded-full bg-yellow px-[clamp(0.35rem,1.6vw,2rem)] text-center text-[clamp(0.42rem,1.7vw,1.5rem)] font-extrabold text-ink"
-            >
-              샘플 받아보기 →
-            </SampleCtaLink>
+            <div className="relative mt-[clamp(1.1rem,3.2vw,2.6rem)]">
+              <PeekingPets className="pointer-events-none absolute bottom-[72%] left-1/2 z-10 w-[min(100%,18rem)] -translate-x-1/2" />
+              <SampleCtaLink
+                source="landing"
+                className="relative inline-flex min-h-[clamp(1.15rem,5.2vw,4.75rem)] w-full items-center justify-center whitespace-nowrap rounded-full bg-yellow px-[clamp(0.35rem,1.6vw,2rem)] text-center text-[clamp(0.42rem,1.7vw,1.5rem)] font-extrabold text-ink"
+              >
+                샘플 받아보기 →
+              </SampleCtaLink>
+            </div>
           </div>
         </div>
       </section>
@@ -64,20 +70,24 @@ export function LandingPage({
       <section className="mx-auto max-w-[82rem] px-[clamp(0.75rem,2vw,1.5rem)] pb-[clamp(1.5rem,4vw,4rem)] pt-[clamp(0.25rem,1vw,0.5rem)]">
         <h2 className="text-[clamp(0.85rem,2.6vw,2.75rem)] font-extrabold leading-snug">안심 사료를 찾기 위한 과정, 어떠셨나요?</h2>
         <div className="mt-[clamp(0.7rem,2vw,2rem)] grid grid-cols-2 gap-[clamp(0.35rem,1vw,0.75rem)]">
-          {problems.map((quote) => (
-            <blockquote
-              key={quote}
-              className="rounded-[clamp(0.7rem,1.6vw,1rem)] bg-[#fff6e4] px-[clamp(0.55rem,1.4vw,1.25rem)] py-[clamp(0.55rem,1.3vw,1.25rem)] text-left text-[clamp(0.58rem,1.6vw,1.35rem)] leading-[1.55]"
-            >
-              “{quote}”
-            </blockquote>
-          ))}
+          {problems.map((quote, index) => {
+            const Face = quoteCharacters[index];
+            const fromRight = index % 2 === 1;
+            return (
+              <div key={quote} className={`flex items-center gap-[clamp(0.28rem,0.9vw,0.75rem)] ${fromRight ? "flex-row-reverse" : ""}`}>
+                <Face className={quoteFaceClass} />
+                <blockquote className="min-w-0 flex-1 rounded-[clamp(0.7rem,1.6vw,1rem)] bg-[#fff6e4] px-[clamp(0.55rem,1.4vw,1.25rem)] py-[clamp(0.55rem,1.3vw,1.25rem)] text-left text-[clamp(0.58rem,1.6vw,1.35rem)] leading-[1.55]">
+                  “{quote}”
+                </blockquote>
+              </div>
+            );
+          })}
         </div>
       </section>
 
       <section className="mx-auto max-w-[82rem] px-[clamp(0.75rem,2vw,1.5rem)] pb-[clamp(1.75rem,5vw,5rem)]">
         <h2 className="text-[clamp(0.85rem,2.6vw,2.75rem)] font-extrabold leading-snug">믿고멍냥은 다릅니다.</h2>
-        <div className="mt-[clamp(0.7rem,2vw,2rem)] grid grid-cols-2 gap-[clamp(0.4rem,1.2vw,1rem)]">
+        <div className="mt-[clamp(1.4rem,4vw,3.25rem)] grid grid-cols-2 gap-[clamp(0.4rem,1.2vw,1rem)]">
           <article className="rounded-[clamp(0.8rem,2vw,1.75rem)] bg-[#fffaf2] p-[clamp(0.55rem,1.8vw,2rem)]">
             <h3 className="text-center text-[clamp(0.7rem,2.2vw,2.75rem)] font-extrabold">기존 소비 방식</h3>
             <div className="mt-[clamp(0.55rem,1.8vw,2rem)] grid grid-cols-[auto_1fr] items-center gap-[clamp(0.4rem,1.6vw,2.5rem)]">
@@ -97,7 +107,8 @@ export function LandingPage({
               </ol>
             </div>
           </article>
-          <article className="rounded-[clamp(0.8rem,2vw,1.75rem)] bg-yellow p-[clamp(0.55rem,1.8vw,2rem)]">
+          <article className="relative rounded-[clamp(0.8rem,2vw,1.75rem)] bg-yellow p-[clamp(0.55rem,1.8vw,2rem)]">
+            <PeekingPets className="pointer-events-none absolute left-1/2 top-0 w-[min(86%,16rem)] -translate-x-1/2 -translate-y-[58%]" />
             <h3 className="text-center text-[clamp(0.7rem,2.2vw,2.75rem)] font-extrabold">믿고멍냥</h3>
             <div className="mt-[clamp(0.55rem,1.8vw,2rem)] grid grid-cols-[auto_1fr] items-center gap-[clamp(0.35rem,1.4vw,2rem)]">
               <p className={comparisonBoxClass}>
