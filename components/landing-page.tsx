@@ -54,8 +54,10 @@ export function LandingPage({
             <p className="text-[clamp(0.58rem,1.7vw,1.35rem)] leading-[1.55] text-ink">
               성분부터 제조 정보까지 꼼꼼하게 살펴보고 선별한 <span className="whitespace-nowrap">사료와</span> 간식만 모았습니다.
             </p>
-            <div className="relative mt-[clamp(1.1rem,3.2vw,2.6rem)]">
-              <PeekingPets className="pointer-events-none absolute bottom-[72%] left-1/2 z-10 w-[min(100%,18rem)] -translate-x-1/2" />
+            <div className="relative mt-[clamp(1.35rem,3.6vw,2.8rem)]">
+              <div className="pointer-events-none absolute inset-x-0 bottom-full z-10 h-[clamp(1.15rem,3.1vw,2.15rem)] overflow-hidden">
+                <PeekingPets className="absolute bottom-0 left-1/2 h-[clamp(1.7rem,4.6vw,3rem)] w-auto -translate-x-1/2" />
+              </div>
               <SampleCtaLink
                 source="landing"
                 className="relative inline-flex min-h-[clamp(1.15rem,5.2vw,4.75rem)] w-full items-center justify-center whitespace-nowrap rounded-full bg-yellow px-[clamp(0.35rem,1.6vw,2rem)] text-center text-[clamp(0.42rem,1.7vw,1.5rem)] font-extrabold text-ink"
@@ -108,7 +110,9 @@ export function LandingPage({
             </div>
           </article>
           <article className="relative rounded-[clamp(0.8rem,2vw,1.75rem)] bg-yellow p-[clamp(0.55rem,1.8vw,2rem)]">
-            <PeekingPets className="pointer-events-none absolute left-1/2 top-0 w-[min(86%,16rem)] -translate-x-1/2 -translate-y-[58%]" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-full z-10 h-[clamp(1.2rem,3.3vw,2.25rem)] overflow-hidden">
+              <PeekingPets className="absolute bottom-0 left-1/2 h-[clamp(1.75rem,4.8vw,3.15rem)] w-auto -translate-x-1/2" />
+            </div>
             <h3 className="text-center text-[clamp(0.7rem,2.2vw,2.75rem)] font-extrabold">믿고멍냥</h3>
             <div className="mt-[clamp(0.55rem,1.8vw,2rem)] grid grid-cols-[auto_1fr] items-center gap-[clamp(0.35rem,1.4vw,2rem)]">
               <p className={comparisonBoxClass}>
