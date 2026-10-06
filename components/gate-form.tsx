@@ -9,7 +9,9 @@ export function GateForm({ nextPath }: { nextPath: string }) {
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-4 py-16">
       <p className="text-sm font-semibold text-forest">믿고멍냥</p>
       <h1 className="mt-2 text-3xl font-bold">팀 확인</h1>
-      <p className="mt-3 text-sm leading-6 text-muted">분석과 상품 관리는 프로젝트 팀만 볼 수 있습니다. 일반 고객 화면에는 이 페이지로 가는 링크를 두지 않습니다.</p>
+      <p className="mt-3 text-sm leading-6 text-muted">
+        분석과 상품 관리는 프로젝트 팀만 볼 수 있습니다. 비밀번호로 들어오면 이 브라우저의 고객 화면 조회는 분석에 잡히지 않습니다.
+      </p>
       <form action={action} className="mt-6 space-y-3 rounded-3xl border border-line bg-card p-5">
         <input type="hidden" name="next" value={nextPath} />
         <label className="block text-sm font-semibold" htmlFor="password">비밀번호</label>

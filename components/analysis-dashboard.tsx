@@ -24,6 +24,9 @@ export function AnalysisDashboard({ data }: { data: DashboardData }) {
           </form>
         </div>
       </div>
+      <p className="mt-4 rounded-2xl border border-line bg-white px-4 py-3 text-sm leading-6">
+        이 브라우저에서는 분석 이벤트가 저장되지 않습니다. 고객 화면을 둘러봐도 조회수에 잡히지 않습니다. 다시 집계하려면 잠그기를 누르세요.
+      </p>
       {data.notice ? <p className="mt-4 rounded-2xl bg-yellow px-4 py-3 text-sm">{data.notice}</p> : null}
 
       <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

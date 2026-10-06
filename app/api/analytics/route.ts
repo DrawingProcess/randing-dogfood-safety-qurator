@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isGateOpen } from "@/lib/auth";
 import { createAnonServerClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
 import { eventNames, petTypes, type EventName, type PetType } from "@/lib/types";
@@ -20,6 +21,9 @@ function sanitizeMetadata(value: unknown) {
 }
 
 export async function POST(request: Request) {
+  if (await isGateOpen()) {
+    return NextResponse.json({ stored: false, skipped: true }, { status: 202 });
+  }
   let body: unknown;
   try {
     body = await request.json();

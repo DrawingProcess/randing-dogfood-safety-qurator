@@ -1,9 +1,18 @@
 "use client";
 
 import { useEffect } from "react";
+import { SKIP_TRACK_COOKIE, SKIP_TRACK_VALUE } from "@/lib/gate-cookies";
 import type { EventName, PetType } from "@/lib/types";
 
 const SESSION_KEY = "mmn_session_id";
+
+function shouldSkipTracking() {
+  if (typeof document === "undefined") return false;
+  return document.cookie.split(";").some((part) => {
+    const [name, ...rest] = part.trim().split("=");
+    return name === SKIP_TRACK_COOKIE && rest.join("=") === SKIP_TRACK_VALUE;
+  });
+}
 
 export type TrackInput = {
   event_name: EventName;
@@ -22,6 +31,7 @@ export function getSessionId() {
 }
 
 export function trackEvent(input: TrackInput) {
+  if (shouldSkipTracking()) return;
   const payload = JSON.stringify({
     session_id: getSessionId(),
     page: window.location.pathname,
